@@ -1,25 +1,21 @@
 {
   "name": "Ice Flow Pro",
   "short_name": "Ice Flow",
-  "description": "Ice Business Management System",
-  "start_url": "/ice-flow-app/index.html",
-  "scope": "/ice-flow-app/",
+  "start_url": ".",
+  "scope": ".",
   "display": "standalone",
   "background_color": "#080c18",
   "theme_color": "#0d1829",
-  "orientation": "portrait",
   "icons": [
     {
       "src": "icon-192.png",
       "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "type": "image/png"
     },
     {
       "src": "icon-512.png",
       "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "type": "image/png"
     }
   ]
 }
