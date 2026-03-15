@@ -316,15 +316,20 @@ tr:last-child td{border-bottom:none}
   <!-- SETTINGS -->
   <div id="s-settings" class="sec">
     <div class="card">
-      <div class="ctitle">🔐 Login Change</div>
-      <input type="text" id="nU" placeholder="Naya Username" style="margin-bottom:8px">
-      <input type="password" id="nP" placeholder="Naya Password" style="margin-bottom:8px">
-      <button class="btn bgry" onclick="changeLogin()">Update Login</button>
+      <div class="ctitle">🔐 Boss Login Change</div>
+      <div style="background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.2);border-radius:10px;padding:10px 12px;margin-bottom:12px;font-size:12px;color:var(--w)">
+        ⚠️ Naya password save hone ke baad purana kaam nahi karega
+      </div>
+      <label class="lbl">Naya Username</label>
+      <input type="text" id="nU" placeholder="Naya username" style="margin-bottom:8px" autocomplete="off">
+      <label class="lbl">Naya Password</label>
+      <input type="password" id="nP" placeholder="Naya password" style="margin-bottom:8px">
+      <button class="btn bgre" onclick="changeLogin()">🔐 Update Login</button>
     </div>
     <div class="card">
       <div class="ctitle">👷 Staff Accounts</div>
-      <div class="fl" style="margin-bottom:10px;flex-wrap:wrap;gap:7px">
-        <input type="text" id="nSU" placeholder="Username" style="flex:2;margin:0;min-width:120px">
+      <div style="display:flex;gap:7px;margin-bottom:8px;flex-wrap:wrap">
+        <input type="text" id="nSU" placeholder="Username" style="flex:2;margin:0;min-width:120px" autocomplete="off">
         <input type="password" id="nSP" placeholder="Password" style="flex:2;margin:0;min-width:120px">
         <button class="btn bblu" style="width:48px;flex:none;padding:0" onclick="addStaff()">+</button>
       </div>
@@ -475,7 +480,8 @@ AUTH.onAuthStateChanged(user => {
 });
 
 // ═══════════ STATE ═══════════
-const ADMIN = {u:'Boss', p:'boss123.'};
+// ADMIN loaded from Firebase — not hardcoded
+let adminCreds = {u:'Boss', p:'boss123.'}; // default only first time
 let custs=[], facs=[], hist={}, notes=[], hisaabs=[], staffAccounts=[];
 let currentUser='boss', activeTab='daily';
 let chartObj=null, chartMode='week', trendMos=3;
@@ -503,6 +509,8 @@ function syncNow(){
     notes=Object.entries(d.notes||{}).map(([id,v])=>({id,...v})).reverse();
     hisaabs=Object.entries(d.hisaabs||{}).map(([id,v])=>({id,...v})).sort((a,b)=>b.savedAt>a.savedAt?1:-1);
     staffAccounts=d.staffAccounts||[];
+    // load admin credentials from Firebase
+    if(d.adminCreds) adminCreds=d.adminCreds;
     lSave();
     const t=new Date().toLocaleTimeString('en-PK',{hour:'2-digit',minute:'2-digit'});
     document.getElementById('ss').textContent='🟢 Synced — '+t;
@@ -562,7 +570,7 @@ function doLogin(){
   const p=document.getElementById('pIn').value.trim();
   const e=document.getElementById('lerr');
   if(!u||!p){e.style.display='block';e.textContent='⚠️ Dono fields bharo';return;}
-  if(u===ADMIN.u&&p===ADMIN.p){
+  if(u===adminCreds.u&&p===adminCreds.p){
     currentUser='boss';
     document.getElementById('loginScreen').style.display='none';
     document.getElementById('app').style.display='block';
@@ -588,7 +596,16 @@ function doLogin(){
   e.style.display='block';e.textContent='❌ Galat username ya password!';
 }
 function doLogout(){if(confirm('Logout?'))location.reload();}
-function changeLogin(){const u=document.getElementById('nU').value.trim(),p=document.getElementById('nP').value.trim();if(!u||!p){toast('Dono bharo','er');return;}ADMIN.u=u;ADMIN.p=p;toast('Login update ✅');}
+function changeLogin(){
+  const u=document.getElementById('nU').value.trim();
+  const p=document.getElementById('nP').value.trim();
+  if(!u||!p){toast('Dono fields bharo','er');return;}
+  if(u===adminCreds.u&&p===adminCreds.p){toast('Naya username/password purane se alag rakho','er');return;}
+  adminCreds={u,p};
+  DB.ref('adminCreds').set({u,p})
+    .then(()=>toast('✅ Login update ho gaya! Purana password kaam nahi karega'))
+    .catch(()=>toast('Error! Internet check karo','er'));
+}
 
 // ═══════════ NAVIGATION ═══════════
 function goTab(tab){
@@ -1049,7 +1066,21 @@ function rptWA(){const el=document.getElementById('rCon');let msg='❄️ *Ice F
 
 // ═══════════ SETTINGS ═══════════
 function addStaff(){const u=document.getElementById('nSU').value.trim(),p=document.getElementById('nSP').value.trim();if(!u||!p){toast('Dono bharo','er');return;}if(staffAccounts.find(s=>s.u===u)){toast('Already exist','er');return;}staffAccounts.push({u,p});DB.ref('staffAccounts').set(staffAccounts);lSave();document.getElementById('nSU').value='';document.getElementById('nSP').value='';toast('Staff account ban gaya ✅');renderSettings();}
-function delStaff(u){if(!confirm('Delete?'))return;staffAccounts=staffAccounts.filter(s=>s.u!==u);DB.ref('staffAccounts').set(staffAccounts);lSave();toast('Deleted','er');renderSettings();}
+function delStaff(u){
+  if(!confirm(u+' ka account delete karein? Woh login nahi kar payega.'))return;
+  staffAccounts=staffAccounts.filter(s=>s.u!==u);
+  DB.ref('staffAccounts').set(staffAccounts);
+  lSave();toast(u+' delete ho gaya','er');renderSettings();
+}
+function editStaffPass(u){
+  const newP=prompt(u+' ka naya password daalo:');
+  if(!newP||!newP.trim()){return;}
+  const idx=staffAccounts.findIndex(s=>s.u===u);
+  if(idx===-1)return;
+  staffAccounts[idx].p=newP.trim();
+  DB.ref('staffAccounts').set(staffAccounts);
+  lSave();toast(u+' ka password update ✅');
+}
 function addFac(){const v=document.getElementById('nF').value.trim();if(!v){toast('Naam likho','er');return;}if(facs.includes(v)){toast('Already exist','er');return;}facs.push(v);DB.ref('factories').set(facs);lSave();document.getElementById('nF').value='';toast('Factory add ✅');renderSettings();}
 function addCust(){const n=document.getElementById('nCN').value.trim(),r=parseFloat(document.getElementById('nCR').value)||0;if(!n){toast('Naam likho','er');return;}if(custs.find(c=>c.name===n)){toast('Already exist','er');return;}custs.push({name:n,rate:r});DB.ref('customers').set(custs);lSave();document.getElementById('nCN').value='';document.getElementById('nCR').value='';toast('Customer add ✅');renderSettings();}
 function updateCustRate(name){const r=parseFloat(document.getElementById('cr_'+sId(name)).value)||0;const idx=custs.findIndex(c=>c.name===name);if(idx>-1){custs[idx].rate=r;DB.ref('customers').set(custs);lSave();toast('Rate update ✅');}}
@@ -1057,7 +1088,17 @@ function editCustName(oldName){const newName=prompt('Naya naam:',oldName);if(!ne
 function delFac(f){if(!confirm('Delete?'))return;facs=facs.filter(x=>x!==f);DB.ref('factories').set(facs);lSave();toast('Deleted','er');renderSettings();}
 function delCust(name){if(!confirm('Delete?'))return;custs=custs.filter(c=>c.name!==name);DB.ref('customers').set(custs);lSave();toast('Deleted','er');renderSettings();}
 function renderSettings(){
-  document.getElementById('staffList').innerHTML=staffAccounts.map(s=>`<div class="si"><div><div style="font-size:13px;font-weight:600">👷 ${s.u}</div><div style="font-size:10px;color:var(--mu)">Password: ${'•'.repeat(Math.min(s.p.length,8))}</div></div><button class="bsm bsr" onclick="delStaff('${s.u}')">Delete</button></div>`).join('')||'<p style="font-size:12px;color:var(--mu)">Koi staff account nahi</p>';
+  document.getElementById('staffList').innerHTML=staffAccounts.map(s=>`
+    <div class="si">
+      <div>
+        <div style="font-size:13px;font-weight:600">👷 ${s.u}</div>
+        <div style="font-size:10px;color:var(--mu)">Password: ${'•'.repeat(Math.min(s.p.length,8))}</div>
+      </div>
+      <div style="display:flex;gap:6px">
+        <button class="bsm bsb" onclick="editStaffPass('${s.u}')">✏️ Pass</button>
+        <button class="bsm bsr" onclick="delStaff('${s.u}')">🗑️ Del</button>
+      </div>
+    </div>`).join('')||'<p style="font-size:12px;color:var(--mu)">Koi staff account nahi</p>';
   document.getElementById('fList').innerHTML=facs.map(f=>`<div class="si"><span style="font-size:13px;font-weight:600">🏭 ${f}</span><button class="bsm bsr" onclick="delFac('${f}')">Delete</button></div>`).join('');
   const q=(document.getElementById('cSrch')?.value||'').toLowerCase();
   document.getElementById('cList').innerHTML=custs.filter(c=>c.name.toLowerCase().includes(q)).map(c=>`<div class="si"><div style="display:flex;align-items:center;gap:8px"><span style="font-size:13px;font-weight:600">👤 ${c.name}</span><button class="bsm bsb" style="padding:4px 8px;font-size:10px" onclick="editCustName('${c.name}')">✏️</button></div><div style="display:flex;gap:6px;align-items:center"><input type="number" id="cr_${sId(c.name)}" value="${c.rate||''}" placeholder="Rate" style="width:90px;margin:0;padding:7px 9px;font-size:12px" onchange="updateCustRate('${c.name}')"><button class="bsm bsr" onclick="delCust('${c.name}')">Del</button></div></div>`).join('');
