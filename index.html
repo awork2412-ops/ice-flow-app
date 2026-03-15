@@ -11,6 +11,7 @@
 <meta name="apple-mobile-web-app-title" content="Ice Flow">
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 <style>
@@ -360,6 +361,25 @@ tr:last-child td{border-bottom:none}
 
   <!-- ═══════════════ STAFF SECTIONS ═══════════════ -->
 
+  <!-- STAFF ENTRY -->
+  <div id="s-staffentry" class="sec">
+    <div class="g2">
+      <div class="sb sbb"><small>Baraf</small><div class="v" id="ssQ">0</div></div>
+      <div class="sb sbg"><small>Cash In</small><div class="v" id="ssC">0</div></div>
+      <div class="sb sbw"><small>Total Bill</small><div class="v" id="ssB">0</div></div>
+      <div class="sb sbr"><small>Baki</small><div class="v" id="ssK">0</div></div>
+    </div>
+    <div class="dr"><label>📅</label><input type="date" id="sEDate" onchange="renderStaffEntry()"></div>
+    <div class="card"><div class="ctitle">🏭 Factory Stock</div><div id="sFacIn"></div></div>
+    <div class="tw">
+      <table>
+        <thead><tr><th>Customer</th><th>Baraf</th><th>Rate</th><th>Bill</th><th>Cash</th><th>Baki</th><th>🔊</th></tr></thead>
+        <tbody id="sEBody"></tbody>
+      </table>
+    </div>
+    <button class="btn bblu" style="margin-top:12px" onclick="saveStaffEntry()">✅ Save & Sync</button>
+  </div>
+
   <!-- STAFF UDHAAR -->
   <div id="s-staffkhata" class="sec">
     <div class="card" style="background:rgba(239,68,68,.05);border-color:rgba(239,68,68,.2);text-align:center;margin-bottom:12px">
@@ -432,6 +452,7 @@ tr:last-child td{border-bottom:none}
 
   <!-- STAFF NAV -->
   <nav id="staffNav" style="display:none">
+    <button id="nb-staffentry" onclick="goTab('staffentry')"><span>📊</span>Entry</button>
     <button id="nb-staffkhata" class="on" onclick="goTab('staffkhata')"><span>💳</span>Udhaar</button>
     <button id="nb-stafforders" onclick="goTab('stafforders')"><span>📦</span>Orders</button>
   </nav>
@@ -440,6 +461,18 @@ tr:last-child td{border-bottom:none}
 'use strict';
 firebase.initializeApp({apiKey:"AIzaSyBfpD_qS1z2zl4_IPyEpmMMKHlPBYPTeNw",authDomain:"ice-flow-f8291.firebaseapp.com",databaseURL:"https://ice-flow-f8291-default-rtdb.firebaseio.com",projectId:"ice-flow-f8291",storageBucket:"ice-flow-f8291.firebasestorage.app",messagingSenderId:"226545354561",appId:"1:226545354561:web:f7255b6c985e1e5e2cc3c0"});
 const DB = firebase.database();
+const AUTH = firebase.auth();
+
+// Sign in anonymously — gives us a uid to use in rules
+// This happens automatically, user sees nothing
+AUTH.signInAnonymously().catch(e => console.log('Auth error:', e));
+AUTH.onAuthStateChanged(user => {
+  if(user) {
+    console.log('Auth OK:', user.uid);
+    // Store uid for rules
+    window._uid = user.uid;
+  }
+});
 
 // ═══════════ STATE ═══════════
 const ADMIN = {u:'Boss', p:'boss123.'};
@@ -548,7 +581,8 @@ function doLogin(){
     document.getElementById('bossNav').style.display='none';
     document.getElementById('staffNav').style.display='flex';
     document.getElementById('hd').textContent='👷 '+staff.u;
-    goTab('staffkhata');
+    document.getElementById('sEDate').value=new Date().toISOString().split('T')[0];
+    goTab('staffentry');
     return;
   }
   e.style.display='block';e.textContent='❌ Galat username ya password!';
@@ -575,6 +609,7 @@ function renderTab(tab){
   else if(tab==='orders')renderBossOrders();
   else if(tab==='notes')renderNotes();
   else if(tab==='settings')renderSettings();
+  else if(tab==='staffentry')renderStaffEntry();
   else if(tab==='staffkhata')renderStaffKhata();
   else if(tab==='stafforders')renderStaffOrders();
 }
@@ -868,6 +903,91 @@ function confirmOrder(name,qty){
       DB.ref('notifications').push({cust:name,qty,time:now,date:today,seen:false});
       renderStaffOrders(); // removes confirmed order from list
     }).catch(()=>toast('Error!','er'));
+}
+
+// ═══════════ STAFF ENTRY ═══════════
+function renderStaffEntry(){
+  const date=document.getElementById('sEDate').value;
+  if(!date)return;
+  const day=hist[date]||{factories:{},sales:{}};
+  // factories
+  document.getElementById('sFacIn').innerHTML=facs.map(f=>{
+    const v=(day.factories&&day.factories[f])||0;
+    return `<div style="display:flex;align-items:center;gap:9px;margin-bottom:7px;background:var(--card2);border-radius:10px;padding:8px 11px"><span style="flex:1;font-size:13px;font-weight:600">🏭 ${f}</span><input class="ei" type="number" id="sf_${sId(f)}" value="${v}" style="width:95px"></div>`;
+  }).join('')||'<p style="color:var(--mu);font-size:12px">Factory nahi hai</p>';
+  // customers
+  let tP=0,tC=0,tB=0;
+  document.getElementById('sEBody').innerHTML=custs.map(cust=>{
+    const n=cust.name,id=sId(n);
+    const s=(day.sales&&day.sales[n])||{qty:0,rate:cust.rate||0,bill:0,paid:0};
+    const pati=parseInt(s.qty||0),rate=parseFloat(s.rate)||cust.rate||0;
+    const bill=parseFloat(s.bill||0),paid=parseFloat(s.paid||0);
+    tP+=pati;tC+=paid;tB+=bill;
+    const qd=pati>0?qStr(pati):'';
+    const rc=cust.rate>0?'style="color:var(--g)"':'';
+    return `<tr>
+      <td style="font-weight:700;text-align:left;padding-left:9px">${n}</td>
+      <td><input class="ei" type="text" id="sq_${id}" value="${qd}" placeholder="2B/4P"></td>
+      <td><input class="ei" type="number" id="sr_${id}" value="${rate||''}" placeholder="Rate" ${rc}></td>
+      <td id="sb_${id}" style="font-weight:700;color:var(--w)">${bill||0}</td>
+      <td><input class="ei" type="number" id="sp_${id}" value="${paid||''}" placeholder="0"></td>
+      <td id="sk_${id}" style="font-weight:700;color:var(--r)">${Math.round(bill-paid)}</td>
+      <td><button onclick="speak('${n}')" style="background:none;border:none;font-size:16px;cursor:pointer">🔊</button></td>
+    </tr>`;
+  }).join('');
+  document.getElementById('ssQ').textContent=qStr(tP);
+  document.getElementById('ssC').textContent=Math.round(tC);
+  document.getElementById('ssB').textContent=Math.round(tB);
+  document.getElementById('ssK').textContent=Math.round(tB-tC);
+  // attach events
+  custs.forEach(cust=>{
+    const id=sId(cust.name);
+    const qEl=document.getElementById('sq_'+id),rEl=document.getElementById('sr_'+id),pEl=document.getElementById('sp_'+id);
+    if(!qEl)return;
+    [qEl,rEl,pEl].forEach((el,i,arr)=>{
+      el.addEventListener('change',()=>recalcStaffRow(cust.name));
+      el.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();arr[i+1]?arr[i+1].focus():el.blur();}});
+    });
+  });
+}
+function recalcStaffRow(name){
+  const id=sId(name);
+  const pati=parseQ(document.getElementById('sq_'+id)?.value);
+  const rate=parseFloat(document.getElementById('sr_'+id)?.value)||0;
+  const paid=parseFloat(document.getElementById('sp_'+id)?.value)||0;
+  const bill=calcBill(pati,rate);
+  const bEl=document.getElementById('sb_'+id),kEl=document.getElementById('sk_'+id);
+  if(bEl)bEl.textContent=bill;if(kEl)kEl.textContent=Math.round(bill-paid);
+  let tP=0,tC=0,tB=0;
+  custs.forEach(c=>{
+    const ci=sId(c.name);
+    const cp=parseQ(document.getElementById('sq_'+ci)?.value);
+    const cr=parseFloat(document.getElementById('sr_'+ci)?.value)||0;
+    const cc=parseFloat(document.getElementById('sp_'+ci)?.value)||0;
+    tP+=cp;tC+=cc;tB+=calcBill(cp,cr);
+  });
+  document.getElementById('ssQ').textContent=qStr(tP);
+  document.getElementById('ssC').textContent=Math.round(tC);
+  document.getElementById('ssB').textContent=Math.round(tB);
+  document.getElementById('ssK').textContent=Math.round(tB-tC);
+}
+function saveStaffEntry(){
+  const date=document.getElementById('sEDate').value;
+  if(!date){toast('Date select karo','er');return;}
+  const f={},s={};
+  facs.forEach(fc=>{f[fc]=document.getElementById('sf_'+sId(fc))?.value||0;});
+  custs.forEach(cust=>{
+    const n=cust.name,id=sId(n);
+    const pati=parseQ(document.getElementById('sq_'+id)?.value);
+    const rate=parseFloat(document.getElementById('sr_'+id)?.value)||0;
+    const paid=parseFloat(document.getElementById('sp_'+id)?.value)||0;
+    s[n]={qty:pati,rate,bill:calcBill(pati,rate),paid};
+  });
+  if(!hist[date])hist[date]={};
+  hist[date].factories=f;hist[date].sales=s;lSave();
+  DB.ref('history/'+date).update({factories:f,sales:s})
+    .then(()=>toast('Saved & Synced ✅'))
+    .catch(()=>toast('Offline — Local save','er'));
 }
 
 // ═══════════ STAFF KHATA ═══════════
