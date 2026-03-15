@@ -1,23 +1,9 @@
-const CACHE = 'ice-flow-v1';
-const FILES = [
-  '/ice-flow-pro.html',
-  '/manifest.json'
-];
-
+const CACHE = 'ice-v1';
 self.addEventListener('install', e => {
-  e.waitUntil(caches.open(CACHE).then(c => c.addAll(FILES)));
+  e.waitUntil(caches.open(CACHE).then(c => c.addAll(['index.html'])));
   self.skipWaiting();
 });
-
-self.addEventListener('activate', e => {
-  e.waitUntil(caches.keys().then(keys =>
-    Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k)))
-  ));
-  self.clients.claim();
-});
-
+self.addEventListener('activate', e => { self.clients.claim(); });
 self.addEventListener('fetch', e => {
-  e.respondWith(
-    fetch(e.request).catch(() => caches.match(e.request))
-  );
+  e.respondWith(fetch(e.request).catch(() => caches.match('index.html')));
 });
