@@ -7,7 +7,6 @@
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#0d1829">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Ice Flow">
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
@@ -18,7 +17,6 @@
 :root{--bg:#080c18;--card:#0f1623;--card2:#161f30;--bdr:rgba(255,255,255,.06);--p:#3b82f6;--p2:#60a5fa;--g:#10b981;--r:#ef4444;--w:#f59e0b;--tx:#e2e8f0;--mu:#64748b}
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--tx);min-height:100vh}
-/* LOGIN */
 #loginScreen{position:fixed;inset:0;z-index:9999;background:var(--bg);display:flex;align-items:center;justify-content:center}
 .lbox{width:88%;max-width:340px;text-align:center}
 .lbox h1{font-size:48px;margin-bottom:8px}
@@ -27,23 +25,18 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--tx);min-heig
 .lbox input{display:block;width:100%;padding:13px 16px;margin-bottom:10px;background:var(--card);border:1px solid var(--bdr);border-radius:12px;color:var(--tx);font-size:15px;font-family:'Sora',sans-serif;outline:none}
 .lbox input:focus{border-color:var(--p)}
 #lerr{display:none;color:var(--r);font-size:12px;margin-top:8px;padding:9px;background:rgba(239,68,68,.1);border-radius:10px}
-/* APP */
 #app{display:none;padding:12px 12px 88px}
 header{display:flex;justify-content:space-between;align-items:center;padding:4px 0 6px}
 .htitle{font-size:17px;font-weight:800;color:var(--p2)}
 .hsub{font-size:10px;color:var(--mu);margin-top:1px}
 #ss{font-size:10px;color:var(--mu);text-align:center;padding:2px 0 10px}
-/* NAV */
 nav{position:fixed;bottom:12px;left:50%;transform:translateX(-50%);width:calc(100% - 24px);max-width:560px;background:#0d1829;backdrop-filter:blur(16px);border:1px solid rgba(96,165,250,.25);border-radius:20px;display:flex;height:66px;z-index:999;box-shadow:0 4px 24px rgba(0,0,0,.5)}
 nav button{flex:1;border:none;background:none;color:#4a6080;font-size:8px;font-family:'Sora',sans-serif;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;cursor:pointer;padding:0 2px;transition:color .15s}
-nav button span{font-size:18px}
+nav button span{font-size:17px}
 nav button.on{color:#fff;background:rgba(59,130,246,.2);border-radius:12px;margin:5px 3px;height:54px}
-/* SECTIONS */
 .sec{display:none}.sec.on{display:block}
-/* CARD */
 .card{background:var(--card);border:1px solid var(--bdr);border-radius:16px;padding:14px;margin-bottom:12px}
 .ctitle{font-size:10px;font-weight:700;color:var(--mu);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px}
-/* STAT GRID */
 .g2{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:12px}
 .sb{border-radius:13px;padding:13px 11px;border:1px solid var(--bdr)}
 .sb small{font-size:9px;font-weight:700;color:var(--mu);text-transform:uppercase;letter-spacing:.06em}
@@ -52,13 +45,11 @@ nav button.on{color:#fff;background:rgba(59,130,246,.2);border-radius:12px;margi
 .sbg{background:rgba(16,185,129,.07)}.sbg .v{color:var(--g)}
 .sbr{background:rgba(239,68,68,.07)}.sbr .v{color:var(--r)}
 .sbw{background:rgba(245,158,11,.07)}.sbw .v{color:var(--w)}
-/* INPUTS */
 input,select,textarea{width:100%;padding:11px 13px;background:var(--card2);border:1px solid var(--bdr);border-radius:11px;color:var(--tx);font-size:14px;font-family:'Sora',sans-serif;outline:none}
 input:focus,select:focus,textarea:focus{border-color:var(--p)}
 select option{background:var(--card)}
 .ei{width:100%!important;padding:8px 3px!important;background:var(--card2)!important;border:1px solid var(--bdr)!important;border-radius:7px!important;color:var(--tx)!important;font-size:12px!important;text-align:center;font-family:'Sora',sans-serif;outline:none}
 .ei:focus{border-color:var(--p)!important}
-/* BUTTONS */
 .btn{display:block;width:100%;padding:13px;border:none;border-radius:12px;font-size:14px;font-weight:700;font-family:'Sora',sans-serif;cursor:pointer}
 .bblu{background:linear-gradient(135deg,#2563eb,#3b82f6);color:#fff}
 .bgre{background:linear-gradient(135deg,#059669,#10b981);color:#fff}
@@ -68,38 +59,30 @@ select option{background:var(--card)}
 .bsr{background:rgba(239,68,68,.15);color:var(--r)}
 .bsg{background:rgba(16,185,129,.15);color:var(--g)}
 .bsw{background:rgba(245,158,11,.15);color:var(--w)}
-/* TABLE */
 .tw{overflow-x:auto;border-radius:13px;border:1px solid var(--bdr)}
-table{width:100%;border-collapse:collapse;min-width:420px}
+table{width:100%;border-collapse:collapse;min-width:480px}
 th{background:linear-gradient(135deg,#1d4ed8,#3b82f6);padding:9px 5px;font-size:10px;font-weight:700;color:#fff;letter-spacing:.05em;text-transform:uppercase}
 td{padding:8px 4px;border-bottom:1px solid var(--bdr);text-align:center;font-size:12px;background:var(--card)}
 tr:last-child td{border-bottom:none}
-/* KHATA */
 .kr{display:flex;justify-content:space-between;align-items:center;padding:13px 15px;background:var(--card);border:1px solid var(--bdr);border-left:4px solid var(--p);border-radius:13px;margin-bottom:8px;cursor:pointer}
 .kd{display:none;background:var(--card2);border:1px solid var(--bdr);border-radius:13px;padding:13px;margin-bottom:10px}
-/* HISAAB */
 .hcard{background:var(--card2);border:1px solid var(--bdr);border-left:4px solid var(--p);border-radius:13px;padding:13px;margin-bottom:9px}
 .hgrid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-top:10px}
 .hcell{border-radius:9px;padding:8px;text-align:center}
 .hcell small{font-size:9px;color:var(--mu);text-transform:uppercase;display:block}
 .hcell b{font-size:13px;font-weight:800;font-family:'JetBrains Mono',monospace;display:block;margin-top:2px}
-/* NOTES */
 .nc{background:var(--card);border:1px solid var(--bdr);border-radius:13px;padding:13px;margin-bottom:9px}
 .nc p{font-size:13px;line-height:1.6;white-space:pre-wrap;margin:6px 0 9px}
-/* TOAST */
 #toast{position:fixed;bottom:82px;left:50%;transform:translateX(-50%);padding:9px 18px;border-radius:11px;font-size:12px;font-weight:700;z-index:9998;display:none;border:1px solid var(--bdr);background:var(--card);white-space:nowrap}
 #toast.ok{color:var(--g);border-color:rgba(16,185,129,.4)}
 #toast.er{color:var(--r);border-color:rgba(239,68,68,.4)}
-/* MODAL */
 .modal{position:fixed;inset:0;z-index:9990;background:rgba(0,0,0,.75);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:16px}
 .modal.show{display:flex}
 .mbox{background:var(--card);border:1px solid var(--bdr);border-radius:22px;width:100%;max-width:420px;padding:20px;max-height:90vh;overflow-y:auto}
 .mbox h3{font-size:16px;font-weight:800;color:var(--p2);margin-bottom:14px}
-/* CHART */
 .cw{position:relative;height:190px;width:100%}
 .ctb{padding:6px 12px;border-radius:20px;font-size:11px;font-weight:600;cursor:pointer;border:1px solid var(--bdr);background:var(--card2);color:var(--mu);font-family:'Sora',sans-serif;margin-right:5px;margin-bottom:10px}
 .ctb.on{background:var(--p);border-color:var(--p);color:#fff}
-/* MISC */
 .dr{display:flex;align-items:center;gap:10px;background:var(--card2);border:1px solid var(--bdr);border-radius:11px;padding:9px 13px;margin-bottom:11px}
 .dr label{font-size:11px;color:var(--mu);font-weight:700;white-space:nowrap}
 .dr input{margin:0;background:transparent;border:none;padding:0;font-size:13px;font-weight:700;color:var(--p2);flex:1;outline:none}
@@ -111,17 +94,11 @@ tr:last-child td{border-bottom:none}
 .bfill{height:5px;border-radius:20px;background:linear-gradient(90deg,#2563eb,#60a5fa)}
 .lbl{font-size:11px;color:var(--mu);display:block;margin-bottom:5px}
 .divider{border:none;border-top:1px solid var(--bdr);margin:12px 0}
-/* ORDER CARD */
-.ocard{display:flex;justify-content:space-between;align-items:center;padding:14px 15px;background:var(--card);border:1px solid var(--bdr);border-left:4px solid var(--p);border-radius:13px;margin-bottom:10px}
-/* STAFF UDHAAR CARD */
-.ucard{display:flex;justify-content:space-between;align-items:center;padding:16px 18px;background:var(--card);border:1px solid var(--bdr);border-radius:14px;margin-bottom:10px;cursor:pointer}
 @media print{nav,.lbtn,.sbtn,.btn,.bsm,#ss,#rptCtrl,header{display:none!important}body{background:#fff;color:#000}.card{background:#fff;border:1px solid #ccc}th,td{border:1px solid #000;color:#000;background:#fff!important}}
 </style>
 </head>
 <body>
 <div id="toast"></div>
-
-<!-- LOGIN -->
 <div id="loginScreen">
   <div class="lbox">
     <h1>❄️</h1><h2>Ice Flow Pro</h2><p>Business Management System</p>
@@ -131,8 +108,6 @@ tr:last-child td{border-bottom:none}
     <div id="lerr"></div>
   </div>
 </div>
-
-<!-- APP -->
 <div id="app">
   <header>
     <div><div class="htitle">❄️ Ice Flow Pro</div><div class="hsub" id="hd"></div></div>
@@ -143,9 +118,7 @@ tr:last-child td{border-bottom:none}
   </header>
   <div id="ss">Connecting...</div>
 
-  <!-- ═══════════════ BOSS SECTIONS ═══════════════ -->
-
-  <!-- DAILY ENTRY -->
+  <!-- DAILY ENTRY (BOSS) -->
   <div id="s-daily" class="sec on">
     <div class="g2">
       <div class="sb sbb"><small>Baraf</small><div class="v" id="sQ">0</div></div>
@@ -157,7 +130,13 @@ tr:last-child td{border-bottom:none}
     <div class="card"><div class="ctitle">🏭 Factory Stock</div><div id="facIn"></div></div>
     <div class="tw">
       <table>
-        <thead><tr><th>Customer</th><th>Baraf<br><small style="opacity:.7;font-size:9px">2B/4P/1B4P</small></th><th>Rate</th><th>Bill</th><th>Cash</th><th>Baki</th><th>🔊</th><th>WA</th></tr></thead>
+        <thead><tr>
+          <th>Customer</th>
+          <th>Baraf<br><small style="opacity:.7;font-size:9px">2B/4P</small></th>
+          <th>Rate</th><th>Bill</th><th>Cash</th><th>Baki</th>
+          <th>Kisne<br><small style="opacity:.7;font-size:9px">Auto</small></th>
+          <th>🔊</th><th>WA</th>
+        </tr></thead>
         <tbody id="eBody"></tbody>
       </table>
     </div>
@@ -211,22 +190,13 @@ tr:last-child td{border-bottom:none}
         <option value="cust">👤 Customer</option>
         <option value="fac">🏭 Factory</option>
       </select>
-      <div id="hCustDiv">
-        <label class="lbl">👤 Customer</label>
-        <select id="hCust" style="margin-bottom:10px" onchange="onHCustChange()"></select>
-      </div>
-      <div id="hFacDiv" style="display:none">
-        <label class="lbl">🏭 Factory</label>
-        <select id="hFac" style="margin-bottom:10px"></select>
-      </div>
+      <div id="hCustDiv"><label class="lbl">👤 Customer</label><select id="hCust" style="margin-bottom:10px" onchange="onHCustChange()"></select></div>
+      <div id="hFacDiv" style="display:none"><label class="lbl">🏭 Factory</label><select id="hFac" style="margin-bottom:10px"></select></div>
       <div class="fl" style="margin-bottom:10px">
         <div><label class="lbl">📅 Date Se</label><input type="date" id="hFrom" style="margin:0"></div>
         <div><label class="lbl">📅 Date Tak</label><input type="date" id="hTo" style="margin:0"></div>
       </div>
-      <div id="hRateDiv">
-        <label class="lbl">💰 Rate/Block</label>
-        <input type="number" id="hRate" placeholder="Rate daalo" style="margin-bottom:14px">
-      </div>
+      <div id="hRateDiv"><label class="lbl">💰 Rate/Block</label><input type="number" id="hRate" placeholder="Rate daalo" style="margin-bottom:14px"></div>
       <button class="btn bblu" onclick="calcHisaab()">🧮 Hisaab Lagao</button>
     </div>
     <div id="hResult" style="display:none">
@@ -267,6 +237,24 @@ tr:last-child td{border-bottom:none}
     <div class="card" id="confirmedCard" style="display:none">
       <div class="ctitle">✅ Staff Ne Confirm Kiya</div>
       <div id="confirmedList"></div>
+    </div>
+  </div>
+
+  <!-- STOCK SUMMARY (BOSS) -->
+  <div id="s-stock" class="sec">
+    <div class="card">
+      <div class="ctitle">📊 Din Ka Poora Hisaab</div>
+      <div class="dr"><label>📅</label><input type="date" id="stockDate" onchange="renderStock()"></div>
+      <div id="stockSummary"></div>
+    </div>
+  </div>
+
+  <!-- SHIFTS (BOSS) -->
+  <div id="s-shifts" class="sec">
+    <div class="card">
+      <div class="ctitle">👥 Chacho Ki Shifts</div>
+      <div class="dr"><label>📅</label><input type="date" id="shiftDate" onchange="renderShifts()"></div>
+      <div id="shiftsList"></div>
     </div>
   </div>
 
@@ -317,9 +305,7 @@ tr:last-child td{border-bottom:none}
   <div id="s-settings" class="sec">
     <div class="card">
       <div class="ctitle">🔐 Boss Login Change</div>
-      <div style="background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.2);border-radius:10px;padding:10px 12px;margin-bottom:12px;font-size:12px;color:var(--w)">
-        ⚠️ Naya password save hone ke baad purana kaam nahi karega
-      </div>
+      <div style="background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.2);border-radius:10px;padding:10px 12px;margin-bottom:12px;font-size:12px;color:var(--w)">⚠️ Save hone ke baad purana password kaam nahi karega</div>
       <label class="lbl">Naya Username</label>
       <input type="text" id="nU" placeholder="Naya username" style="margin-bottom:8px" autocomplete="off">
       <label class="lbl">Naya Password</label>
@@ -327,13 +313,18 @@ tr:last-child td{border-bottom:none}
       <button class="btn bgre" onclick="changeLogin()">🔐 Update Login</button>
     </div>
     <div class="card">
-      <div class="ctitle">👷 Staff Accounts</div>
-      <div style="display:flex;gap:7px;margin-bottom:8px;flex-wrap:wrap">
-        <input type="text" id="nSU" placeholder="Username" style="flex:2;margin:0;min-width:120px" autocomplete="off">
-        <input type="password" id="nSP" placeholder="Password" style="flex:2;margin:0;min-width:120px">
-        <button class="btn bblu" style="width:48px;flex:none;padding:0" onclick="addStaff()">+</button>
-      </div>
-      <div id="staffList"></div>
+      <div class="ctitle">👥 Accounts (Staff / Chacho)</div>
+      <label class="lbl">Role</label>
+      <select id="nSRole" style="margin-bottom:8px">
+        <option value="staff">👷 Staff — Udhaar + Orders</option>
+        <option value="chacho">🧔 Chacho — Delivery entry</option>
+      </select>
+      <label class="lbl">Username</label>
+      <input type="text" id="nSU" placeholder="Username" style="margin-bottom:8px" autocomplete="off">
+      <label class="lbl">Password</label>
+      <input type="password" id="nSP" placeholder="Password" style="margin-bottom:8px">
+      <button class="btn bblu" onclick="addStaff()">+ Account Banao</button>
+      <div id="staffList" style="margin-top:10px"></div>
     </div>
     <div class="card">
       <div class="ctitle">🏭 Factories</div>
@@ -344,7 +335,7 @@ tr:last-child td{border-bottom:none}
       <div id="fList"></div>
     </div>
     <div class="card">
-      <div class="ctitle">👥 Customers</div>
+      <div class="ctitle">👤 Customers</div>
       <input type="text" id="cSrch" placeholder="🔍 Search..." oninput="renderSettings()" style="margin-bottom:8px">
       <div style="display:flex;gap:7px;margin-bottom:10px;flex-wrap:wrap">
         <input type="text" id="nCN" placeholder="Customer naam" style="flex:2;margin:0;min-width:120px">
@@ -364,9 +355,7 @@ tr:last-child td{border-bottom:none}
     </div>
   </div>
 
-  <!-- ═══════════════ STAFF SECTIONS ═══════════════ -->
-
-  <!-- STAFF ENTRY -->
+  <!-- STAFF: ENTRY -->
   <div id="s-staffentry" class="sec">
     <div class="g2">
       <div class="sb sbb"><small>Baraf</small><div class="v" id="ssQ">0</div></div>
@@ -378,14 +367,20 @@ tr:last-child td{border-bottom:none}
     <div class="card"><div class="ctitle">🏭 Factory Stock</div><div id="sFacIn"></div></div>
     <div class="tw">
       <table>
-        <thead><tr><th>Customer</th><th>Baraf</th><th>Rate</th><th>Bill</th><th>Cash</th><th>Baki</th><th>🔊</th></tr></thead>
+        <thead><tr>
+          <th>Customer</th>
+          <th>Baraf<br><small style="opacity:.7;font-size:9px">2B/4P</small></th>
+          <th>Rate</th><th>Bill</th><th>Cash</th><th>Baki</th>
+          <th>Kisne<br><small style="opacity:.7;font-size:9px">Auto</small></th>
+          <th>🔊</th>
+        </tr></thead>
         <tbody id="sEBody"></tbody>
       </table>
     </div>
     <button class="btn bblu" style="margin-top:12px" onclick="saveStaffEntry()">✅ Save & Sync</button>
   </div>
 
-  <!-- STAFF UDHAAR -->
+  <!-- STAFF: UDHAAR -->
   <div id="s-staffkhata" class="sec">
     <div class="card" style="background:rgba(239,68,68,.05);border-color:rgba(239,68,68,.2);text-align:center;margin-bottom:12px">
       <div style="font-size:10px;color:var(--mu);text-transform:uppercase">Kul Udhaar</div>
@@ -395,13 +390,39 @@ tr:last-child td{border-bottom:none}
     <div id="skList"></div>
   </div>
 
-  <!-- STAFF ORDERS -->
+  <!-- STAFF: ORDERS -->
   <div id="s-stafforders" class="sec">
     <div class="card" style="background:rgba(16,185,129,.04);border-color:rgba(16,185,129,.2)">
       <div class="ctitle">📦 Aaj Ka Order</div>
-      <p style="font-size:11px;color:var(--mu);margin-bottom:12px">Confirm dabao jab baraf utar do — order hat jaayega</p>
+      <p style="font-size:11px;color:var(--mu);margin-bottom:12px">Confirm dabao jab baraf utar do</p>
       <div id="soList"></div>
       <div id="soEmpty" style="display:none;text-align:center;padding:30px;color:var(--g);font-size:14px">✅ Sab orders complete!</div>
+    </div>
+  </div>
+
+  <!-- CHACHO: DELIVERY -->
+  <div id="s-chacho" class="sec">
+    <div class="card" style="background:rgba(245,158,11,.04);border-color:rgba(245,158,11,.2)">
+      <div class="ctitle">🚚 Customer Delivery</div>
+      <div class="dr"><label>📅</label><input type="date" id="cShiftDate" onchange="renderChacho()"></div>
+      <p style="font-size:11px;color:var(--mu);margin-bottom:10px">🔊 Naam pe tap karo — naam sunai dega</p>
+      <div id="cDeliveryList"></div>
+      <button class="btn bgre" style="margin-top:10px" onclick="saveChachoDelivery()">💾 Delivery Save Karo</button>
+    </div>
+  </div>
+
+  <!-- CHACHO: SHIFT END -->
+  <div id="s-cachaoshift" class="sec">
+    <div class="card" style="background:rgba(239,68,68,.04);border-color:rgba(239,68,68,.2)">
+      <div class="ctitle">✅ Shift Khatam Karo</div>
+      <label class="lbl">❄️ Kitni Baraf Bachi?</label>
+      <input type="text" id="cBachiBaraf" placeholder="2B / 4P / 1B6P" style="margin-bottom:4px" oninput="previewBachi()">
+      <div id="cBachiPreview" style="font-size:13px;color:var(--p2);font-weight:700;margin-bottom:12px;min-height:20px;padding-left:4px"></div>
+      <label class="lbl">💰 Kitna Cash Aaya?</label>
+      <input type="number" id="cCash" placeholder="Total cash Rs." style="margin-bottom:12px">
+      <label class="lbl">📝 Note (Optional)</label>
+      <input type="text" id="cNote" placeholder="Koi masla ya baat..." style="margin-bottom:14px">
+      <button class="btn bgre" onclick="endShift()">📤 Shift Submit Karo</button>
     </div>
   </div>
 
@@ -417,12 +438,11 @@ tr:last-child td{border-bottom:none}
       </div>
     </div>
   </div>
-
   <div id="editHModal" class="modal">
     <div class="mbox">
       <h3>✏️ Hisaab Edit Karo</h3>
       <input type="hidden" id="ehId">
-      <label class="lbl">👤 Customer / Factory</label>
+      <label class="lbl">👤 Customer</label>
       <input type="text" id="ehCust" readonly style="margin-bottom:10px;opacity:.6">
       <div class="fl" style="margin-bottom:10px">
         <div><label class="lbl">📅 Date Se</label><input type="date" id="ehFrom" style="margin:0"></div>
@@ -450,6 +470,8 @@ tr:last-child td{border-bottom:none}
     <button id="nb-khata" onclick="goTab('khata')"><span>💳</span>Khata</button>
     <button id="nb-hisaab" onclick="goTab('hisaab')"><span>🧾</span>Hisaab</button>
     <button id="nb-orders" onclick="goTab('orders')"><span>📦</span>Orders</button>
+    <button id="nb-stock" onclick="goTab('stock')"><span>📊</span>Stock</button>
+    <button id="nb-shifts" onclick="goTab('shifts')"><span>👥</span>Shifts</button>
     <button id="nb-notes" onclick="goTab('notes')"><span>📝</span>Notes</button>
     <button id="nb-reports" onclick="goTab('reports')"><span>🗂️</span>Reports</button>
     <button id="nb-settings" onclick="goTab('settings')"><span>⚙️</span>Settings</button>
@@ -461,68 +483,61 @@ tr:last-child td{border-bottom:none}
     <button id="nb-staffkhata" class="on" onclick="goTab('staffkhata')"><span>💳</span>Udhaar</button>
     <button id="nb-stafforders" onclick="goTab('stafforders')"><span>📦</span>Orders</button>
   </nav>
+
+  <!-- CHACHO NAV -->
+  <nav id="cachoNav" style="display:none">
+    <button id="nb-chacho" class="on" onclick="goTab('chacho')"><span>🚚</span>Delivery</button>
+    <button id="nb-cachaoshift" onclick="goTab('cachaoshift')"><span>✅</span>Shift End</button>
+  </nav>
 </div>
 <script>
 'use strict';
 firebase.initializeApp({apiKey:"AIzaSyBfpD_qS1z2zl4_IPyEpmMMKHlPBYPTeNw",authDomain:"ice-flow-f8291.firebaseapp.com",databaseURL:"https://ice-flow-f8291-default-rtdb.firebaseio.com",projectId:"ice-flow-f8291",storageBucket:"ice-flow-f8291.firebasestorage.app",messagingSenderId:"226545354561",appId:"1:226545354561:web:f7255b6c985e1e5e2cc3c0"});
-const DB = firebase.database();
-const AUTH = firebase.auth();
+const DB=firebase.database(),AUTH=firebase.auth();
+AUTH.signInAnonymously().catch(e=>console.log(e));
 
-// Sign in anonymously — gives us a uid to use in rules
-// This happens automatically, user sees nothing
-AUTH.signInAnonymously().catch(e => console.log('Auth error:', e));
-AUTH.onAuthStateChanged(user => {
-  if(user) {
-    console.log('Auth OK:', user.uid);
-    // Store uid for rules
-    window._uid = user.uid;
-  }
-});
+// ═══ STATE ═══
+let adminCreds={u:'Boss',p:'boss123.'};
+let custs=[],facs=[],hist={},notes=[],hisaabs=[],staffAccounts=[];
+let currentUser='boss',currentUserName='Boss',activeTab='daily';
+let chartObj=null,chartMode='week',trendMos=3;
+let _hTotalBill=0,_hPrevPaid=0;
 
-// ═══════════ STATE ═══════════
-// ADMIN loaded from Firebase — not hardcoded
-let adminCreds = {u:'Boss', p:'boss123.'}; // default only first time
-let custs=[], facs=[], hist={}, notes=[], hisaabs=[], staffAccounts=[];
-let currentUser='boss', activeTab='daily';
-let chartObj=null, chartMode='week', trendMos=3;
-let _hTotalBill=0, _hPrevPaid=0;
-
-// ═══════════ LOCAL STORAGE ═══════════
-function lSave(){try{localStorage.setItem('ifp5',JSON.stringify({custs,facs,hist,notes,hisaabs,staffAccounts}));}catch(e){}}
+// ═══ LOCAL STORAGE ═══
+function lSave(){try{localStorage.setItem('ifp6',JSON.stringify({custs,facs,hist,notes,hisaabs,staffAccounts,adminCreds}));}catch(e){}}
 function lLoad(){
   try{
-    const d=JSON.parse(localStorage.getItem('ifp5')||'{}');
+    const d=JSON.parse(localStorage.getItem('ifp6')||'{}');
     custs=(d.custs||[]).map(c=>typeof c==='string'?{name:c,rate:0}:c);
-    facs=d.facs||[]; hist=d.hist||{}; notes=d.notes||[];
-    hisaabs=d.hisaabs||[]; staffAccounts=d.staffAccounts||[];
+    facs=d.facs||[];hist=d.hist||{};notes=d.notes||[];
+    hisaabs=d.hisaabs||[];staffAccounts=d.staffAccounts||[];
+    if(d.adminCreds)adminCreds=d.adminCreds;
   }catch(e){}
 }
 lLoad();
 
-// ═══════════ FIREBASE SYNC ═══════════
+// ═══ SYNC ═══
 function syncNow(){
   document.getElementById('ss').textContent='🔄 Syncing...';
   DB.ref('/').once('value').then(snap=>{
     const d=snap.val()||{};
     custs=(d.customers||[]).map(c=>typeof c==='string'?{name:c,rate:0}:c);
-    facs=d.factories||[]; hist=d.history||{};
+    facs=d.factories||[];hist=d.history||{};
     notes=Object.entries(d.notes||{}).map(([id,v])=>({id,...v})).reverse();
     hisaabs=Object.entries(d.hisaabs||{}).map(([id,v])=>({id,...v})).sort((a,b)=>b.savedAt>a.savedAt?1:-1);
     staffAccounts=d.staffAccounts||[];
-    // load admin credentials from Firebase
-    if(d.adminCreds) adminCreds=d.adminCreds;
+    if(d.adminCreds)adminCreds=d.adminCreds;
     lSave();
-    const t=new Date().toLocaleTimeString('en-PK',{hour:'2-digit',minute:'2-digit'});
-    document.getElementById('ss').textContent='🟢 Synced — '+t;
-    renderTab(activeTab); updateMeta();
+    document.getElementById('ss').textContent='🟢 Synced — '+new Date().toLocaleTimeString('en-PK',{hour:'2-digit',minute:'2-digit'});
+    renderTab(activeTab);updateMeta();
     if(document.getElementById('app').style.display==='block'){
-      if(currentUser==='boss') setTimeout(()=>{checkUdhaarAlert();checkBossNotifs();},800);
+      if(currentUser==='boss')setTimeout(()=>{checkUdhaarAlert();checkBossNotifs();},800);
     }
-  }).catch(()=>{ document.getElementById('ss').textContent='🔴 Offline — Local data'; });
+  }).catch(()=>document.getElementById('ss').textContent='🔴 Offline');
 }
 syncNow();
 
-// ═══════════ HELPERS ═══════════
+// ═══ HELPERS ═══
 let _tt;
 function toast(msg,type='ok'){const el=document.getElementById('toast');el.textContent=msg;el.className=type;el.style.display='block';clearTimeout(_tt);_tt=setTimeout(()=>el.style.display='none',2800);}
 function openModal(id){document.getElementById(id).classList.add('show');}
@@ -532,103 +547,108 @@ function qStr(pati){pati=Math.round(pati||0);if(!pati)return '0';const b=Math.fl
 function calcBill(pati,rate){return Math.round((pati/8)*rate*100)/100;}
 function sId(n){return n.replace(/[^a-zA-Z0-9]/g,'_');}
 function speak(text){
-  if(!('speechSynthesis' in window)){toast('Browser speech support nahi karta','er');return;}
+  if(!('speechSynthesis' in window))return;
   window.speechSynthesis.cancel();
-  const trySpeak=()=>{
+  const tryIt=()=>{
     const voices=window.speechSynthesis.getVoices();
     const m=new SpeechSynthesisUtterance();
     m.text=text;
     m.rate=0.8;
-    m.pitch=0.85; // lower pitch = male sound
-    // prefer male voice: look for 'male' keyword or deep-sounding voices
-    const maleVoice=
+    m.pitch=0.9;
+    // Priority: Urdu → Hindi → any non-female
+    const v=
+      voices.find(v=>v.lang==='ur-PK')||
+      voices.find(v=>v.lang==='ur')||
+      voices.find(v=>v.lang.startsWith('ur'))||
+      voices.find(v=>v.lang==='hi-IN')||
+      voices.find(v=>v.lang==='hi')||
+      voices.find(v=>v.lang.startsWith('hi'))||
+      voices.find(v=>v.name.toLowerCase().includes('hindi'))||
+      voices.find(v=>v.name.toLowerCase().includes('urdu'))||
       voices.find(v=>v.name.toLowerCase().includes('male')&&!v.name.toLowerCase().includes('female'))||
       voices.find(v=>v.name.toLowerCase().includes('david'))||
-      voices.find(v=>v.name.toLowerCase().includes('daniel'))||
-      voices.find(v=>v.name.toLowerCase().includes('mark'))||
-      voices.find(v=>v.name.toLowerCase().includes('james'))||
-      voices.find(v=>v.name.toLowerCase().includes('google uk english male'))||
-      voices.find(v=>v.lang.startsWith('ur')&&v.name.toLowerCase().includes('male'))||
-      voices.find(v=>v.lang.startsWith('ur'))||
-      voices.find(v=>v.lang.startsWith('hi')&&v.name.toLowerCase().includes('male'))||
-      voices.find(v=>v.lang.startsWith('en')&&v.name.toLowerCase().includes('male'))||
-      voices.find(v=>!v.name.toLowerCase().includes('female')&&v.lang.startsWith('en'))||
       voices[0];
-    if(maleVoice)m.voice=maleVoice;
+    if(v){
+      m.voice=v;
+      // set lang to match voice
+      m.lang=v.lang||'hi-IN';
+    } else {
+      m.lang='hi-IN';
+    }
     window.speechSynthesis.speak(m);
     toast('🔊 '+text,'ok');
   };
-  // voices may not be loaded yet
-  const voices=window.speechSynthesis.getVoices();
-  if(voices.length) trySpeak();
-  else{window.speechSynthesis.onvoiceschanged=()=>trySpeak();}
+  const vs=window.speechSynthesis.getVoices();
+  if(vs.length)tryIt();
+  else window.speechSynthesis.onvoiceschanged=tryIt;
 }
 
-// ═══════════ LOGIN ═══════════
+// ═══ LOGIN ═══
 function doLogin(){
-  const u=document.getElementById('uIn').value.trim();
-  const p=document.getElementById('pIn').value.trim();
+  const u=document.getElementById('uIn').value.trim(),p=document.getElementById('pIn').value.trim();
   const e=document.getElementById('lerr');
   if(!u||!p){e.style.display='block';e.textContent='⚠️ Dono fields bharo';return;}
   if(u===adminCreds.u&&p===adminCreds.p){
-    currentUser='boss';
+    currentUser='boss';currentUserName='Boss';
     document.getElementById('loginScreen').style.display='none';
     document.getElementById('app').style.display='block';
     document.getElementById('bossNav').style.display='flex';
     document.getElementById('staffNav').style.display='none';
+    document.getElementById('cachoNav').style.display='none';
     document.getElementById('eDate').value=new Date().toISOString().split('T')[0];
-    document.getElementById('hd').textContent='👑 Boss — '+new Date().toLocaleDateString('en-PK',{weekday:'long',day:'numeric',month:'long'});
-    goTab('daily');
-    return;
+    document.getElementById('hd').textContent='👑 Boss';
+    goTab('daily');return;
   }
   const staff=staffAccounts.find(s=>s.u===u&&s.p===p);
   if(staff){
-    currentUser='staff';
+    currentUserName=staff.u;
     document.getElementById('loginScreen').style.display='none';
     document.getElementById('app').style.display='block';
-    document.getElementById('bossNav').style.display='none';
-    document.getElementById('staffNav').style.display='flex';
-    document.getElementById('hd').textContent='👷 '+staff.u;
-    document.getElementById('sEDate').value=new Date().toISOString().split('T')[0];
-    goTab('staffentry');
+    document.getElementById('hd').textContent=(staff.role==='chacho'?'🧔 ':'👷 ')+staff.u;
+    if(staff.role==='chacho'){
+      currentUser='chacho';
+      document.getElementById('bossNav').style.display='none';
+      document.getElementById('staffNav').style.display='none';
+      document.getElementById('cachoNav').style.display='flex';
+      document.getElementById('cShiftDate').value=new Date().toISOString().split('T')[0];
+      goTab('chacho');
+    }else{
+      currentUser='staff';
+      document.getElementById('bossNav').style.display='none';
+      document.getElementById('staffNav').style.display='flex';
+      document.getElementById('cachoNav').style.display='none';
+      document.getElementById('sEDate').value=new Date().toISOString().split('T')[0];
+      goTab('staffentry');
+    }
     return;
   }
   e.style.display='block';e.textContent='❌ Galat username ya password!';
 }
 function doLogout(){if(confirm('Logout?'))location.reload();}
 function changeLogin(){
-  const u=document.getElementById('nU').value.trim();
-  const p=document.getElementById('nP').value.trim();
-  if(!u||!p){toast('Dono fields bharo','er');return;}
-  if(u===adminCreds.u&&p===adminCreds.p){toast('Naya username/password purane se alag rakho','er');return;}
+  const u=document.getElementById('nU').value.trim(),p=document.getElementById('nP').value.trim();
+  if(!u||!p){toast('Dono bharo','er');return;}
   adminCreds={u,p};
-  DB.ref('adminCreds').set({u,p})
-    .then(()=>toast('✅ Login update ho gaya! Purana password kaam nahi karega'))
-    .catch(()=>toast('Error! Internet check karo','er'));
+  DB.ref('adminCreds').set({u,p}).then(()=>toast('✅ Login update ho gaya!')).catch(()=>toast('Error!','er'));
+  lSave();
 }
 
-// ═══════════ NAVIGATION ═══════════
+// ═══ NAV ═══
 function goTab(tab){
+  // permission check
+  if(currentUser==='chacho'&&!['chacho','cachaoshift'].includes(tab))return;
+  if(currentUser==='staff'&&!['staffentry','staffkhata','stafforders'].includes(tab))return;
   document.querySelectorAll('.sec').forEach(s=>s.classList.remove('on'));
   document.querySelectorAll('nav button').forEach(b=>b.classList.remove('on'));
   const sec=document.getElementById('s-'+tab);
   const btn=document.getElementById('nb-'+tab);
   if(sec)sec.classList.add('on');
   if(btn)btn.classList.add('on');
-  activeTab=tab;
-  renderTab(tab);
+  activeTab=tab;renderTab(tab);
 }
 function renderTab(tab){
-  if(tab==='daily')renderDaily();
-  else if(tab==='charts')renderCharts();
-  else if(tab==='khata')renderKhata();
-  else if(tab==='hisaab')renderHisaab();
-  else if(tab==='orders')renderBossOrders();
-  else if(tab==='notes')renderNotes();
-  else if(tab==='settings')renderSettings();
-  else if(tab==='staffentry')renderStaffEntry();
-  else if(tab==='staffkhata')renderStaffKhata();
-  else if(tab==='stafforders')renderStaffOrders();
+  const fns={daily:renderDaily,charts:renderCharts,khata:renderKhata,hisaab:renderHisaab,orders:renderBossOrders,stock:renderStock,notes:renderNotes,settings:renderSettings,staffkhata:renderStaffKhata,stafforders:renderStaffOrders,chacho:renderChacho};
+  if(fns[tab])fns[tab]();
 }
 function updateMeta(){
   document.getElementById('iC').textContent=custs.length;
@@ -637,24 +657,42 @@ function updateMeta(){
   document.getElementById('rT').innerHTML=facs.map(f=>`<option value="${f}">🏭 ${f}</option>`).join('')+custs.map(c=>`<option value="${c.name}">👤 ${c.name}</option>`).join('');
 }
 
-// ═══════════ DAILY ENTRY ═══════════
+// ═══ DAILY ENTRY ═══
+// KEY INSIGHT: hist[date].deliveries[] stores WHO delivered WHAT
+// hist[date].sales{} stores TOTAL per customer for billing/khata
+// Both are updated together — never conflict
+
 function renderDaily(){
   const date=document.getElementById('eDate').value;
   if(!date)return;
-  const day=hist[date]||{factories:{},sales:{}};
+  const day=hist[date]||{factories:{},sales:{},deliveries:[]};
+
+  // factories
   document.getElementById('facIn').innerHTML=facs.map(f=>{
     const v=(day.factories&&day.factories[f])||0;
-    return `<div style="display:flex;align-items:center;gap:9px;margin-bottom:7px;background:var(--card2);border-radius:10px;padding:8px 11px;"><span style="flex:1;font-size:13px;font-weight:600">🏭 ${f}</span><input class="ei" type="number" id="f_${sId(f)}" value="${v}" style="width:95px"></div>`;
+    return `<div style="display:flex;align-items:center;gap:9px;margin-bottom:7px;background:var(--card2);border-radius:10px;padding:8px 11px"><span style="flex:1;font-size:13px;font-weight:600">🏭 ${f}</span><input class="ei" type="number" id="f_${sId(f)}" value="${v}" style="width:95px"></div>`;
   }).join('')||'<p style="color:var(--mu);font-size:12px">Settings se factory add karo</p>';
+
+  // build delivery lookup: cust -> [{by, qty, time}]
+  const delivMap={};
+  (day.deliveries||[]).forEach(d=>{
+    if(!delivMap[d.cust])delivMap[d.cust]=[];
+    delivMap[d.cust].push(d);
+  });
+
   let tP=0,tC=0,tB=0;
   document.getElementById('eBody').innerHTML=custs.map(cust=>{
     const n=cust.name,id=sId(n);
     const s=(day.sales&&day.sales[n])||{qty:0,rate:cust.rate||0,bill:0,paid:0};
-    const pati=parseInt(s.qty||0),rate=parseFloat(s.rate)||cust.rate||0,bill=parseFloat(s.bill||0),paid=parseFloat(s.paid||0);
+    const pati=parseInt(s.qty||0),rate=parseFloat(s.rate)||cust.rate||0;
+    const bill=parseFloat(s.bill||0),paid=parseFloat(s.paid||0);
     tP+=pati;tC+=paid;tB+=bill;
     const qd=pati>0?qStr(pati):'';
     const rc=cust.rate>0?'style="color:var(--g)"':'';
     const wa=encodeURIComponent(`*Ice Flow*\n👤 ${n}\n📅 ${date}\n❄️ ${qStr(pati)}\n💰 Bill: Rs.${bill}\n✅ Paid: Rs.${paid}\n⏳ Baki: Rs.${Math.round(bill-paid)}`);
+    // who delivered — auto from deliveries log
+    const delivs=delivMap[n]||[];
+    const kisne=delivs.length?delivs.map(d=>d.by+'('+qStr(d.qty)+')').join(', '):'—';
     return `<tr>
       <td style="font-weight:700;text-align:left;padding-left:9px">${n}</td>
       <td><input class="ei" type="text" id="q_${id}" value="${qd}" placeholder="2B/4P"></td>
@@ -662,6 +700,7 @@ function renderDaily(){
       <td id="b_${id}" style="font-weight:700;color:var(--w)">${bill||0}</td>
       <td><input class="ei" type="number" id="p_${id}" value="${paid||''}" placeholder="0"></td>
       <td id="k_${id}" style="font-weight:700;color:var(--r)">${Math.round(bill-paid)}</td>
+      <td style="font-size:10px;color:var(--p2);max-width:80px;word-break:break-word;line-height:1.4">${kisne}</td>
       <td><button onclick="speak('${n}')" style="background:none;border:none;font-size:16px;cursor:pointer">🔊</button></td>
       <td><a href="https://wa.me/?text=${wa}" target="_blank" style="font-size:17px;text-decoration:none">📲</a></td>
     </tr>`;
@@ -680,6 +719,7 @@ function renderDaily(){
     });
   });
 }
+
 function recalcRow(name){
   const id=sId(name);
   const pati=parseQ(document.getElementById('q_'+id)?.value);
@@ -692,17 +732,222 @@ function recalcRow(name){
   custs.forEach(c=>{const ci=sId(c.name);const cp=parseQ(document.getElementById('q_'+ci)?.value);const cr=parseFloat(document.getElementById('r_'+ci)?.value)||0;const cc=parseFloat(document.getElementById('p_'+ci)?.value)||0;tP+=cp;tC+=cc;tB+=calcBill(cp,cr);});
   document.getElementById('sQ').textContent=qStr(tP);document.getElementById('sC').textContent=Math.round(tC);document.getElementById('sB').textContent=Math.round(tB);document.getElementById('sK').textContent=Math.round(tB-tC);
 }
+
 function saveData(){
-  const date=document.getElementById('eDate').value;if(!date){toast('Date select karo','er');return;}
+  const date=document.getElementById('eDate').value;
+  if(!date){toast('Date select karo','er');return;}
   const f={},s={};
   facs.forEach(fc=>{f[fc]=document.getElementById('f_'+sId(fc))?.value||0;});
-  custs.forEach(cust=>{const n=cust.name,id=sId(n);const pati=parseQ(document.getElementById('q_'+id)?.value);const rate=parseFloat(document.getElementById('r_'+id)?.value)||0;const paid=parseFloat(document.getElementById('p_'+id)?.value)||0;s[n]={qty:pati,rate,bill:calcBill(pati,rate),paid};});
-  if(!hist[date])hist[date]={};hist[date].factories=f;hist[date].sales=s;lSave();
-  DB.ref('history/'+date).update({factories:f,sales:s}).then(()=>toast('Saved & Synced ✅')).catch(()=>toast('Offline — Local save','er'));
+  custs.forEach(cust=>{
+    const n=cust.name,id=sId(n);
+    const pati=parseQ(document.getElementById('q_'+id)?.value);
+    const rate=parseFloat(document.getElementById('r_'+id)?.value)||0;
+    const paid=parseFloat(document.getElementById('p_'+id)?.value)||0;
+    s[n]={qty:pati,rate,bill:calcBill(pati,rate),paid};
+  });
+  if(!hist[date])hist[date]={factories:{},sales:{},deliveries:[]};
+  hist[date].factories=f;hist[date].sales=s;
+  lSave();
+  DB.ref('history/'+date).update({factories:f,sales:s})
+    .then(()=>toast('Saved & Synced ✅')).catch(()=>toast('Offline — Local save','er'));
 }
 
-// ═══════════ CHARTS ═══════════
-function switchChart(type,el){chartMode=type;document.querySelectorAll('.ctb').forEach(t=>t.classList.remove('on'));el.classList.add('on');document.getElementById('trendSel').style.display=type==='trend'?'block':'none';if(type==='trend'){document.getElementById('trendC').innerHTML='<option value="">-- Select --</option>'+custs.map(c=>`<option value="${c.name}">${c.name}</option>`).join('');}renderCharts();}
+// ═══ CHACHO DELIVERY ═══
+function renderChacho(){
+  const date=document.getElementById('cShiftDate').value||new Date().toISOString().split('T')[0];
+  document.getElementById('cShiftDate').value=date;
+  document.getElementById('cDeliveryList').innerHTML=custs.map(c=>`
+    <div style="display:flex;align-items:center;gap:9px;margin-bottom:8px;background:var(--card2);border-radius:10px;padding:9px 12px">
+      <span onclick="speak('${c.name}')" style="flex:1;font-size:13px;font-weight:600;cursor:pointer">👤 ${c.name} <span style="opacity:.5;font-size:11px">🔊</span></span>
+      <input class="ei" type="text" id="cd_${sId(c.name)}" placeholder="2B/4P" style="width:90px">
+    </div>`).join('')||'<p style="color:var(--mu);font-size:12px">Customer nahi hai</p>';
+}
+
+function saveChachoDelivery(){
+  const date=document.getElementById('cShiftDate').value;
+  if(!date){toast('Date select karo','er');return;}
+  const now=new Date().toLocaleTimeString('en-PK',{hour:'2-digit',minute:'2-digit'});
+  // collect deliveries entered by this chacho
+  const newDelivs=[];
+  custs.forEach(c=>{
+    const pati=parseQ(document.getElementById('cd_'+sId(c.name))?.value);
+    if(pati>0) newDelivs.push({by:currentUserName,cust:c.name,qty:pati,rate:c.rate||0,bill:calcBill(pati,c.rate||0),time:now});
+  });
+  if(!newDelivs.length){toast('Koi delivery nahi daali','er');return;}
+
+  if(!hist[date])hist[date]={factories:{},sales:{},deliveries:[]};
+  if(!hist[date].deliveries)hist[date].deliveries=[];
+  if(!hist[date].sales)hist[date].sales={};
+
+  // Add new deliveries — keep old ones from other users
+  newDelivs.forEach(d=>{
+    // remove previous entry from SAME user for SAME customer today (update)
+    hist[date].deliveries=hist[date].deliveries.filter(x=>!(x.by===d.by&&x.cust===d.cust));
+    hist[date].deliveries.push(d);
+    // update sales total (sum all deliveries for this customer)
+    const allForCust=hist[date].deliveries.filter(x=>x.cust===d.cust);
+    const totalPati=allForCust.reduce((a,x)=>a+parseInt(x.qty||0),0);
+    const rate=d.rate||custs.find(c=>c.name===d.cust)?.rate||0;
+    if(!hist[date].sales[d.cust])hist[date].sales[d.cust]={qty:0,rate,bill:0,paid:0};
+    hist[date].sales[d.cust].qty=totalPati;
+    hist[date].sales[d.cust].bill=calcBill(totalPati,rate);
+  });
+
+  lSave();
+  DB.ref('history/'+date).update({sales:hist[date].sales,deliveries:hist[date].deliveries})
+    .then(()=>{
+      toast('✅ Delivery save ho gayi!');
+      custs.forEach(c=>{const el=document.getElementById('cd_'+sId(c.name));if(el)el.value='';});
+    }).catch(()=>toast('Error!','er'));
+}
+
+function previewBachi(){
+  const pati=parseQ(document.getElementById('cBachiBaraf').value);
+  document.getElementById('cBachiPreview').textContent=pati>0?'= '+qStr(pati)+' ('+pati+' pati)':'';
+}
+
+function endShift(){
+  const date=document.getElementById('cShiftDate').value||new Date().toISOString().split('T')[0];
+  const bachiRaw=document.getElementById('cBachiBaraf').value||'0';
+  const bachiPati=parseQ(bachiRaw);
+  const bachi=qStr(bachiPati);
+  const cash=parseFloat(document.getElementById('cCash').value)||0;
+  const note=document.getElementById('cNote').value.trim();
+  const now=new Date().toLocaleTimeString('en-PK',{hour:'2-digit',minute:'2-digit'});
+  DB.ref('shifts/'+date+'/'+sId(currentUserName)).set({user:currentUserName,date,bachiBaraf:bachi,bachiPati,cash,note,submittedAt:now})
+    .then(()=>{
+      toast('✅ Shift submit ho gayi!');
+      DB.ref('notifications').push({type:'shift',msg:currentUserName+' ki shift khatam — Cash: Rs.'+cash+' — Bachi baraf: '+bachi,time:now,date,seen:false});
+      document.getElementById('cBachiBaraf').value='';
+      document.getElementById('cBachiPreview').textContent='';
+      document.getElementById('cCash').value='';
+      document.getElementById('cNote').value='';
+    }).catch(()=>toast('Error!','er'));
+}
+
+// ═══ STOCK SUMMARY ═══
+function renderStock(){
+  const date=document.getElementById('stockDate').value||new Date().toISOString().split('T')[0];
+  document.getElementById('stockDate').value=date;
+  const day=hist[date]||{factories:{},sales:{},deliveries:[]};
+
+  // ── 1. Factory se aayi (from factory inputs) ──────────
+  let totalFacBlocks=0;
+  const facRows=facs.map(f=>{
+    const qty=parseFloat((day.factories&&day.factories[f])||0);
+    totalFacBlocks+=qty;
+    return `<div style="display:flex;justify-content:space-between;padding:8px 12px;background:var(--card2);border-radius:9px;margin-bottom:6px;font-size:13px">
+      <span style="font-weight:600">🏭 ${f}</span>
+      <span style="color:var(--p2);font-weight:700;font-family:'JetBrains Mono',monospace">+${qty}B</span>
+    </div>`;
+  }).join('');
+
+  // ── 2. Customers ko gayi (from sales table — entry tab) ──
+  let totalSalesPati=0;
+  const salesRows=Object.entries(day.sales||{}).filter(([,s])=>parseInt(s.qty||0)>0).map(([name,s])=>{
+    const pati=parseInt(s.qty||0);
+    totalSalesPati+=pati;
+    return `<div style="display:flex;justify-content:space-between;padding:7px 12px;background:var(--card2);border-radius:9px;margin-bottom:5px;font-size:12px">
+      <span style="color:var(--mu)">👤 ${name}</span>
+      <span style="color:var(--r);font-weight:700;font-family:'JetBrains Mono',monospace">-${qStr(pati)}</span>
+    </div>`;
+  }).join('');
+
+  // ── 3. Kisne deliver kiya (from deliveries log) ────────
+  const byPerson={};
+  (day.deliveries||[]).forEach(d=>{
+    const pati=parseInt(d.qty||0);
+    if(!byPerson[d.by])byPerson[d.by]={pati:0,entries:[]};
+    byPerson[d.by].pati+=pati;
+    byPerson[d.by].entries.push({cust:d.cust,qty:qStr(pati),time:d.time||''});
+  });
+  const personRows=Object.entries(byPerson).map(([person,data])=>{
+    const icon=staffAccounts.find(s=>s.u===person&&s.role==='chacho')?'🧔':'👷';
+    const entryList=data.entries.map(e=>`<div style="font-size:11px;color:var(--mu);padding:2px 0 2px 12px">• ${e.cust}: ${e.qty}${e.time?' ('+e.time+')':''}</div>`).join('');
+    return `<div style="background:var(--card2);border-radius:10px;padding:10px 12px;margin-bottom:8px">
+      <div style="display:flex;justify-content:space-between;margin-bottom:5px">
+        <span style="font-weight:700;font-size:13px">${icon} ${person}</span>
+        <span style="color:var(--g);font-weight:700;font-family:'JetBrains Mono',monospace">${qStr(data.pati)}</span>
+      </div>${entryList}
+    </div>`;
+  }).join('');
+
+  // ── 4. Bachi baraf calculation ─────────────────────────
+  // Total aai - Total gayi = Bachi
+  const totalFacPati = totalFacBlocks * 8;
+  const bachiPati = Math.max(0, totalFacPati - totalSalesPati);
+
+  // ── 5. Shift summaries from Firebase ──────────────────
+  DB.ref('shifts/'+date).once('value').then(snap=>{
+    const shifts=snap.val()||{};
+    const shiftRows=Object.values(shifts).map(s=>`
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:9px 12px;background:var(--card2);border-radius:9px;margin-bottom:6px">
+        <div>
+          <div style="font-weight:700;font-size:13px">🧔 ${s.user}</div>
+          <div style="font-size:10px;color:var(--mu)">💰 Cash: Rs.${s.cash} | ❄️ Bachi: ${s.bachiBaraf}</div>
+          ${s.note?`<div style="font-size:10px;color:var(--mu)">📝 ${s.note}</div>`:''}
+        </div>
+        <span style="font-size:10px;color:var(--mu)">${s.submittedAt}</span>
+      </div>`).join('');
+
+    document.getElementById('stockSummary').innerHTML=`
+      <!-- Factory -->
+      <div style="margin-bottom:14px">
+        <div style="font-size:10px;color:var(--mu);font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px">🏭 Factory Se Aayi (Aaj)</div>
+        ${facRows||'<p style="color:var(--mu);font-size:12px;padding:8px">Factory entry nahi ki</p>'}
+        <div style="display:flex;justify-content:space-between;padding:9px 12px;background:rgba(59,130,246,.1);border-radius:9px;font-weight:800">
+          <span style="color:var(--p2)">Total</span>
+          <span style="color:var(--p2);font-family:'JetBrains Mono',monospace">+${totalFacBlocks}B</span>
+        </div>
+      </div>
+
+      <!-- Sales — customers ko gayi -->
+      <div style="margin-bottom:14px">
+        <div style="font-size:10px;color:var(--mu);font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px">🛒 Customers Ko Gayi (Entry Tab Se)</div>
+        ${salesRows||'<p style="color:var(--mu);font-size:12px;padding:8px">Koi sale nahi</p>'}
+        <div style="display:flex;justify-content:space-between;padding:9px 12px;background:rgba(239,68,68,.1);border-radius:9px;font-weight:800">
+          <span style="color:var(--r)">Total Gayi</span>
+          <span style="color:var(--r);font-family:'JetBrains Mono',monospace">-${qStr(totalSalesPati)}</span>
+        </div>
+      </div>
+
+      <!-- Kisne deliver kiya -->
+      ${Object.keys(byPerson).length?`
+      <div style="margin-bottom:14px">
+        <div style="font-size:10px;color:var(--mu);font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px">🚚 Kisne Deliver Kiya</div>
+        ${personRows}
+      </div>`:''}
+
+      <!-- Shift summaries -->
+      ${Object.keys(shifts).length?`
+      <div style="margin-bottom:14px">
+        <div style="font-size:10px;color:var(--mu);font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px">✅ Shift Summaries</div>
+        ${shiftRows}
+      </div>`:''}
+
+      <!-- Final calculation -->
+      <div style="background:rgba(245,158,11,.08);border:2px solid rgba(245,158,11,.3);border-radius:13px;padding:14px">
+        <div style="font-size:10px;color:var(--mu);font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px">📦 Stock Calculation</div>
+        <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:7px;padding:0 4px">
+          <span>🏭 Factory se aayi</span>
+          <span style="font-weight:700;color:var(--p2)">+${totalFacBlocks}B</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:7px;padding:0 4px">
+          <span>🛒 Customers ko gayi</span>
+          <span style="font-weight:700;color:var(--r)">-${qStr(totalSalesPati)}</span>
+        </div>
+        <div style="border-top:2px solid rgba(245,158,11,.3);margin:10px 0"></div>
+        <div style="display:flex;justify-content:space-between;font-size:16px;font-weight:800;padding:0 4px">
+          <span>❄️ Bachi Hogi</span>
+          <span style="color:var(--w);font-family:'JetBrains Mono',monospace">${qStr(bachiPati)}</span>
+        </div>
+      </div>`;
+  });
+}
+
+
+// ═══ CHARTS ═══
+function switchChart(type,el){chartMode=type;document.querySelectorAll('.ctb').forEach(t=>t.classList.remove('on'));el.classList.add('on');document.getElementById('trendSel').style.display=type==='trend'?'block':'none';if(type==='trend')document.getElementById('trendC').innerHTML='<option value="">-- Select --</option>'+custs.map(c=>`<option value="${c.name}">${c.name}</option>`).join('');renderCharts();}
 function setTM(n,el){trendMos=n;document.querySelectorAll('#trendSel .ctb').forEach(t=>t.classList.remove('on'));el.classList.add('on');drawTrend();}
 function renderCharts(){if(chartMode==='week')drawWeek();else if(chartMode==='month')drawMonth();else if(chartMode==='tops')drawTops();else if(chartMode==='trend')drawTrend();if(chartMode!=='trend'){drawStats();drawTopCusts();}}
 function nDates(n){return Array.from({length:n},(_,i)=>{const d=new Date();d.setDate(d.getDate()-(n-1-i));return d.toISOString().split('T')[0];});}
@@ -714,7 +959,99 @@ function buildChart(labels,datasets,type){if(chartObj){chartObj.destroy();chartO
 function drawStats(){const dates=nDates(7);const revs=dates.map(d=>{const h=hist[d];if(!h?.sales)return 0;return Object.values(h.sales).reduce((a,s)=>a+parseFloat(s.paid||0),0);});const avg=Math.round(revs.reduce((a,b)=>a+b,0)/revs.length);const maxV=Math.max(...revs),bestD=dates[revs.indexOf(maxV)];const mon=new Date().toISOString().slice(0,7);let mB=0,mP=0;Object.entries(hist).filter(([d])=>d.startsWith(mon)).forEach(([,h])=>{if(h.sales)Object.values(h.sales).forEach(s=>{mB+=parseFloat(s.bill||0);mP+=(parseFloat(s.bill||0)-parseFloat(s.paid||0));});});document.getElementById('aA').textContent=avg;document.getElementById('aB').textContent=bestD?bestD.slice(5):'—';document.getElementById('aM').textContent=Math.round(mB);document.getElementById('aP').textContent=Math.round(mP);}
 function drawTopCusts(){const mon=new Date().toISOString().slice(0,7),ct={};custs.forEach(c=>ct[c.name]={qty:0});Object.entries(hist).filter(([d])=>d.startsWith(mon)).forEach(([,h])=>{if(h.sales)Object.entries(h.sales).forEach(([n,s])=>{if(ct[n])ct[n].qty+=parseInt(s.qty||0);});});const sorted=Object.entries(ct).sort((a,b)=>b[1].qty-a[1].qty).slice(0,5);const maxQ=sorted[0]?.[1].qty||1;document.getElementById('topC').innerHTML=sorted.map(([name,d],i)=>`<div style="margin-bottom:11px"><div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:3px"><span style="font-weight:600">${i+1}. ${name}</span><span style="color:var(--mu);font-family:'JetBrains Mono',monospace">${qStr(d.qty)}</span></div><div class="bbg"><div class="bfill" style="width:${Math.round((d.qty/maxQ)*100)}%"></div></div></div>`).join('')||'<p style="color:var(--mu);font-size:12px">Data nahi</p>';}
 
-// ═══════════ KHATA ═══════════
+// ═══ STAFF ENTRY ═══
+function renderStaffEntry(){
+  const date=document.getElementById('sEDate').value;
+  if(!date)return;
+  const day=hist[date]||{factories:{},sales:{},deliveries:[]};
+
+  // factories
+  document.getElementById('sFacIn').innerHTML=facs.map(f=>{
+    const v=(day.factories&&day.factories[f])||0;
+    return `<div style="display:flex;align-items:center;gap:9px;margin-bottom:7px;background:var(--card2);border-radius:10px;padding:8px 11px"><span style="flex:1;font-size:13px;font-weight:600">🏭 ${f}</span><input class="ei" type="number" id="sf_${sId(f)}" value="${v}" style="width:95px"></div>`;
+  }).join('')||'<p style="color:var(--mu);font-size:12px">Factory nahi hai</p>';
+
+  // delivery lookup
+  const delivMap={};
+  (day.deliveries||[]).forEach(d=>{
+    if(!delivMap[d.cust])delivMap[d.cust]=[];
+    delivMap[d.cust].push(d);
+  });
+
+  let tP=0,tC=0,tB=0;
+  document.getElementById('sEBody').innerHTML=custs.map(cust=>{
+    const n=cust.name,id=sId(n);
+    const s=(day.sales&&day.sales[n])||{qty:0,rate:cust.rate||0,bill:0,paid:0};
+    const pati=parseInt(s.qty||0),rate=parseFloat(s.rate)||cust.rate||0;
+    const bill=parseFloat(s.bill||0),paid=parseFloat(s.paid||0);
+    tP+=pati;tC+=paid;tB+=bill;
+    const qd=pati>0?qStr(pati):'';
+    const rc=cust.rate>0?'style="color:var(--g)"':'';
+    const delivs=delivMap[n]||[];
+    const kisne=delivs.length?delivs.map(d=>d.by+'('+qStr(d.qty)+')').join(', '):'—';
+    return `<tr>
+      <td style="font-weight:700;text-align:left;padding-left:9px">${n}</td>
+      <td><input class="ei" type="text" id="sq_${id}" value="${qd}" placeholder="2B/4P"></td>
+      <td><input class="ei" type="number" id="sr_${id}" value="${rate||''}" placeholder="Rate" ${rc}></td>
+      <td id="seb_${id}" style="font-weight:700;color:var(--w)">${bill||0}</td>
+      <td><input class="ei" type="number" id="sp_${id}" value="${paid||''}" placeholder="0"></td>
+      <td id="sek_${id}" style="font-weight:700;color:var(--r)">${Math.round(bill-paid)}</td>
+      <td style="font-size:10px;color:var(--p2);max-width:80px;word-break:break-word;line-height:1.4">${kisne}</td>
+      <td><button onclick="speak('${n}')" style="background:none;border:none;font-size:16px;cursor:pointer">🔊</button></td>
+    </tr>`;
+  }).join('');
+  document.getElementById('ssQ').textContent=qStr(tP);
+  document.getElementById('ssC').textContent=Math.round(tC);
+  document.getElementById('ssB').textContent=Math.round(tB);
+  document.getElementById('ssK').textContent=Math.round(tB-tC);
+  custs.forEach(cust=>{
+    const id=sId(cust.name);
+    const qEl=document.getElementById('sq_'+id),rEl=document.getElementById('sr_'+id),pEl=document.getElementById('sp_'+id);
+    if(!qEl)return;
+    [qEl,rEl,pEl].forEach((el,i,arr)=>{
+      el.addEventListener('change',()=>recalcStaffRow(cust.name));
+      el.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();arr[i+1]?arr[i+1].focus():el.blur();}});
+    });
+  });
+}
+function recalcStaffRow(name){
+  const id=sId(name);
+  const pati=parseQ(document.getElementById('sq_'+id)?.value);
+  const rate=parseFloat(document.getElementById('sr_'+id)?.value)||0;
+  const paid=parseFloat(document.getElementById('sp_'+id)?.value)||0;
+  const bill=calcBill(pati,rate);
+  const bEl=document.getElementById('seb_'+id),kEl=document.getElementById('sek_'+id);
+  if(bEl)bEl.textContent=bill;if(kEl)kEl.textContent=Math.round(bill-paid);
+  let tP=0,tC=0,tB=0;
+  custs.forEach(c=>{const ci=sId(c.name);const cp=parseQ(document.getElementById('sq_'+ci)?.value);const cr=parseFloat(document.getElementById('sr_'+ci)?.value)||0;const cc=parseFloat(document.getElementById('sp_'+ci)?.value)||0;tP+=cp;tC+=cc;tB+=calcBill(cp,cr);});
+  document.getElementById('ssQ').textContent=qStr(tP);document.getElementById('ssC').textContent=Math.round(tC);document.getElementById('ssB').textContent=Math.round(tB);document.getElementById('ssK').textContent=Math.round(tB-tC);
+}
+function saveStaffEntry(){
+  const date=document.getElementById('sEDate').value;
+  if(!date){toast('Date select karo','er');return;}
+  const now=new Date().toLocaleTimeString('en-PK',{hour:'2-digit',minute:'2-digit'});
+  const f={},s={};
+  facs.forEach(fc=>{f[fc]=document.getElementById('sf_'+sId(fc))?.value||0;});
+  if(!hist[date])hist[date]={factories:{},sales:{},deliveries:[]};
+  if(!hist[date].deliveries)hist[date].deliveries=[];
+  custs.forEach(cust=>{
+    const n=cust.name,id=sId(n);
+    const pati=parseQ(document.getElementById('sq_'+id)?.value);
+    const rate=parseFloat(document.getElementById('sr_'+id)?.value)||0;
+    const paid=parseFloat(document.getElementById('sp_'+id)?.value)||0;
+    s[n]={qty:pati,rate,bill:calcBill(pati,rate),paid};
+    // update deliveries log — staff ki entry
+    if(pati>0){
+      hist[date].deliveries=hist[date].deliveries.filter(d=>!(d.by===currentUserName&&d.cust===n));
+      hist[date].deliveries.push({by:currentUserName,cust:n,qty:pati,rate,bill:calcBill(pati,rate),paid,time:now});
+    }
+  });
+  hist[date].factories=f;hist[date].sales=s;lSave();
+  DB.ref('history/'+date).update({factories:f,sales:s,deliveries:hist[date].deliveries})
+    .then(()=>toast('Saved & Synced ✅')).catch(()=>toast('Offline — Local save','er'));
+}
+
+// ═══ KHATA ═══
 function renderKhata(){
   const tot={},logs={},today=new Date();
   Object.entries(hist).forEach(([date,h])=>{
@@ -733,7 +1070,7 @@ function renderKhata(){
     const bl=(logs[n]||[]).filter(l=>l.baki>0.01).sort((a,b)=>a.date>b.date?1:-1);
     const oldest=bl.length?Math.max(...bl.map(l=>l.age)):0;
     const col=oldest>30?'var(--r)':oldest>14?'var(--w)':'var(--p)';
-    const wa=encodeURIComponent(`*Ice Flow — Reminder*\n👤 ${n}\n💰 Baki: Rs.${Math.round(v)}\n📅 ${oldest} din se pending\nPlease payment karen.`);
+    const wa=encodeURIComponent(`*Ice Flow*\n👤 ${n}\n💰 Baki: Rs.${Math.round(v)}\n📅 ${oldest} din se pending\nPlease payment karen.`);
     const rows=bl.slice(0,8).map(l=>`<tr><td>${l.date}</td><td style="color:var(--w)">Rs.${Math.round(l.bill)}</td><td style="color:var(--g)">Rs.${Math.round(l.paid)}</td><td style="color:var(--r)">Rs.${Math.round(l.baki)}</td></tr>`).join('');
     return `<div class="kr" onclick="toggleK('${id}')" style="border-left-color:${col}">
       <div><div style="font-weight:700;font-size:13px">${n}</div><div style="font-size:10px;color:var(--mu)">${oldest} days pending</div></div>
@@ -743,9 +1080,7 @@ function renderKhata(){
       </div>
     </div>
     <div class="kd" id="kd_${id}">
-      <div class="tw" style="margin-bottom:11px">
-        <table style="min-width:260px"><thead><tr><th>Date</th><th>Bill</th><th>Paid</th><th>Baki</th></tr></thead><tbody>${rows}</tbody></table>
-      </div>
+      <div class="tw" style="margin-bottom:11px"><table style="min-width:260px"><thead><tr><th>Date</th><th>Bill</th><th>Paid</th><th>Baki</th></tr></thead><tbody>${rows}</tbody></table></div>
       <div style="background:rgba(16,185,129,.06);border:1px solid rgba(16,185,129,.2);border-radius:11px;padding:11px">
         <div style="font-size:10px;color:var(--mu);font-weight:700;margin-bottom:7px">➕ PAYMENT DALO</div>
         <div style="display:flex;gap:6px">
@@ -764,7 +1099,7 @@ function addKhataPayment(name,id){
   const amt=parseFloat(document.getElementById('pa_'+id).value)||0;
   const date=document.getElementById('pd_'+id).value;
   if(!amt){toast('Amount daalo','er');return;}if(!date){toast('Date select karo','er');return;}
-  if(!hist[date])hist[date]={factories:{},sales:{}};
+  if(!hist[date])hist[date]={factories:{},sales:{},deliveries:[]};
   if(!hist[date].sales[name])hist[date].sales[name]={qty:0,rate:0,bill:0,paid:0};
   hist[date].sales[name].paid=(parseFloat(hist[date].sales[name].paid)||0)+amt;
   lSave();
@@ -772,315 +1107,74 @@ function addKhataPayment(name,id){
     .then(()=>{toast('Payment save Rs.'+amt+' ✅');renderKhata();}).catch(()=>toast('Error!','er'));
 }
 
-// ═══════════ HISAAB ═══════════
+// ═══ HISAAB ═══
 function renderHisaab(){
   const cSel=document.getElementById('hCust'),fSel=document.getElementById('hFac');
   const pc=cSel.value,pf=fSel.value;
   cSel.innerHTML='<option value="">-- Customer Select Karo --</option>'+custs.map(c=>`<option value="${c.name}">${c.name}</option>`).join('');
   fSel.innerHTML='<option value="">-- Factory Select Karo --</option>'+facs.map(f=>`<option value="${f}">${f}</option>`).join('');
   if(pc)cSel.value=pc;if(pf)fSel.value=pf;
-  if(!document.getElementById('hTo').value) document.getElementById('hTo').value=new Date().toISOString().split('T')[0];
+  if(!document.getElementById('hTo').value)document.getElementById('hTo').value=new Date().toISOString().split('T')[0];
   renderHHistory();
 }
-function onHTypeChange(){
-  const t=document.getElementById('hType').value;
-  document.getElementById('hCustDiv').style.display=t==='cust'?'block':'none';
-  document.getElementById('hFacDiv').style.display=t==='fac'?'block':'none';
-  document.getElementById('hRateDiv').style.display=t==='cust'?'block':'none';
-  document.getElementById('hResult').style.display='none';
-}
-function onHCustChange(){
-  const name=document.getElementById('hCust').value;if(!name)return;
-  const c=custs.find(x=>x.name===name);if(c?.rate)document.getElementById('hRate').value=c.rate;
-  const custH=hisaabs.filter(h=>h.cust===name).sort((a,b)=>b.toDate>a.toDate?1:-1);
-  if(custH.length){const last=new Date(custH[0].toDate+'T00:00:00');last.setDate(last.getDate()+1);document.getElementById('hFrom').value=last.toISOString().split('T')[0];}
-  else{const dates=Object.keys(hist).filter(d=>hist[d]?.sales?.[name]).sort();if(dates.length)document.getElementById('hFrom').value=dates[0];}
-  document.getElementById('hResult').style.display='none';
-}
+function onHTypeChange(){const t=document.getElementById('hType').value;document.getElementById('hCustDiv').style.display=t==='cust'?'block':'none';document.getElementById('hFacDiv').style.display=t==='fac'?'block':'none';document.getElementById('hRateDiv').style.display=t==='cust'?'block':'none';document.getElementById('hResult').style.display='none';}
+function onHCustChange(){const name=document.getElementById('hCust').value;if(!name)return;const c=custs.find(x=>x.name===name);if(c?.rate)document.getElementById('hRate').value=c.rate;const custH=hisaabs.filter(h=>h.cust===name).sort((a,b)=>b.toDate>a.toDate?1:-1);if(custH.length){const last=new Date(custH[0].toDate+'T00:00:00');last.setDate(last.getDate()+1);document.getElementById('hFrom').value=last.toISOString().split('T')[0];}else{const dates=Object.keys(hist).filter(d=>hist[d]?.sales?.[name]).sort();if(dates.length)document.getElementById('hFrom').value=dates[0];}document.getElementById('hResult').style.display='none';}
 function calcHisaab(){
-  const type=document.getElementById('hType').value;
-  const from=document.getElementById('hFrom').value,to=document.getElementById('hTo').value;
-  if(!from||!to){toast('Dates daalo','er');return;}if(from>to){toast('Date Se, Date Tak se pehle nahi','er');return;}
-  if(type==='fac'){
-    const facName=document.getElementById('hFac').value;if(!facName){toast('Factory select karo','er');return;}
-    const dates=Object.keys(hist).filter(d=>d>=from&&d<=to&&hist[d]?.factories?.[facName]).sort();
-    if(!dates.length){toast('Is period mein factory entry nahi','er');return;}
-    let totalQty=0,rows='';
-    dates.forEach(date=>{const qty=parseFloat(hist[date].factories[facName]||0);totalQty+=qty;rows+=`<div style="display:flex;justify-content:space-between;padding:7px 10px;background:var(--card2);border-radius:8px;margin-bottom:4px;font-size:12px"><span style="color:var(--mu)">${date}</span><span style="font-weight:700;color:var(--p2)">${qty} units</span></div>`;});
-    _hTotalBill=0;_hPrevPaid=0;
-    document.getElementById('hDetail').innerHTML=rows+`<div style="display:flex;justify-content:space-between;padding:10px 12px;background:rgba(59,130,246,.1);border-radius:9px;margin-top:8px;font-weight:800;font-size:13px"><span style="color:var(--p2)">Total (${dates.length} din)</span><span style="color:var(--p2)">${totalQty} units</span></div>`;
-    document.getElementById('hPayDiv').style.display='none';document.getElementById('hSaveBtn').style.display='none';document.getElementById('hResult').style.display='block';return;
-  }
+  const type=document.getElementById('hType').value,from=document.getElementById('hFrom').value,to=document.getElementById('hTo').value;
+  if(!from||!to){toast('Dates daalo','er');return;}if(from>to){toast('Date Se pehle honi chahiye','er');return;}
+  if(type==='fac'){const facName=document.getElementById('hFac').value;if(!facName){toast('Factory select karo','er');return;}const dates=Object.keys(hist).filter(d=>d>=from&&d<=to&&hist[d]?.factories?.[facName]).sort();if(!dates.length){toast('Data nahi','er');return;}let tQ=0,rows='';dates.forEach(date=>{const qty=parseFloat(hist[date].factories[facName]||0);tQ+=qty;rows+=`<div style="display:flex;justify-content:space-between;padding:7px 10px;background:var(--card2);border-radius:8px;margin-bottom:4px;font-size:12px"><span style="color:var(--mu)">${date}</span><span style="font-weight:700;color:var(--p2)">${qty}B</span></div>`;});_hTotalBill=0;_hPrevPaid=0;document.getElementById('hDetail').innerHTML=rows+`<div style="display:flex;justify-content:space-between;padding:10px 12px;background:rgba(59,130,246,.1);border-radius:9px;margin-top:8px;font-weight:800;font-size:13px"><span style="color:var(--p2)">Total (${dates.length} din)</span><span style="color:var(--p2)">${tQ}B</span></div>`;document.getElementById('hPayDiv').style.display='none';document.getElementById('hSaveBtn').style.display='none';document.getElementById('hResult').style.display='block';return;}
   const name=document.getElementById('hCust').value,rate=parseFloat(document.getElementById('hRate').value)||0;
   if(!name){toast('Customer select karo','er');return;}if(!rate){toast('Rate daalo','er');return;}
   const dates=Object.keys(hist).filter(d=>d>=from&&d<=to&&hist[d]?.sales?.[name]).sort();
-  if(!dates.length){toast('Is period mein baraf entry nahi','er');return;}
-  let totalPati=0,totalBill=0,totalPrevPaid=0,rows='';
-  dates.forEach(date=>{const s=hist[date].sales[name];const pati=parseInt(s.qty||0),r=parseFloat(s.rate)||rate,bill=calcBill(pati,r),paid=parseFloat(s.paid||0);totalPati+=pati;totalBill+=bill;totalPrevPaid+=paid;rows+=`<div style="display:flex;justify-content:space-between;align-items:center;padding:7px 10px;background:var(--card2);border-radius:8px;margin-bottom:4px;font-size:12px"><span style="color:var(--mu);min-width:80px">${date}</span><span style="min-width:55px;text-align:center">${qStr(pati)}</span><span style="color:var(--w);min-width:65px;text-align:right">Rs.${bill}</span><span style="color:var(--g);min-width:65px;text-align:right">${paid>0?'✅Rs.'+paid:'—'}</span></div>`;});
-  _hTotalBill=totalBill;_hPrevPaid=totalPrevPaid;const baki=Math.round(totalBill-totalPrevPaid);
-  document.getElementById('hDetail').innerHTML=`<div style="display:flex;justify-content:space-between;padding:3px 10px;font-size:10px;color:var(--mu);font-weight:700;margin-bottom:5px"><span>DATE</span><span>BARAF</span><span>BILL</span><span>PAID</span></div>${rows}<div style="display:flex;justify-content:space-between;padding:10px 12px;background:rgba(59,130,246,.1);border-radius:9px;margin-top:8px;font-weight:800;font-size:13px"><span style="color:var(--p2)">Total (${dates.length} din)</span><span style="color:var(--p2)">${qStr(totalPati)}</span><span style="color:var(--w)">Rs.${Math.round(totalBill)}</span><span style="color:var(--g)">Rs.${Math.round(totalPrevPaid)}</span></div>`;
+  if(!dates.length){toast('Data nahi','er');return;}
+  let tPati=0,tBill=0,tPaid=0,rows='';
+  dates.forEach(date=>{const s=hist[date].sales[name];const pati=parseInt(s.qty||0),r=parseFloat(s.rate)||rate,bill=calcBill(pati,r),paid=parseFloat(s.paid||0);tPati+=pati;tBill+=bill;tPaid+=paid;rows+=`<div style="display:flex;justify-content:space-between;align-items:center;padding:7px 10px;background:var(--card2);border-radius:8px;margin-bottom:4px;font-size:12px"><span style="color:var(--mu);min-width:80px">${date}</span><span style="min-width:55px;text-align:center">${qStr(pati)}</span><span style="color:var(--w);min-width:65px;text-align:right">Rs.${bill}</span><span style="color:var(--g);min-width:65px;text-align:right">${paid>0?'✅Rs.'+paid:'—'}</span></div>`;});
+  _hTotalBill=tBill;_hPrevPaid=tPaid;const baki=Math.round(tBill-tPaid);
+  document.getElementById('hDetail').innerHTML=`<div style="display:flex;justify-content:space-between;padding:3px 10px;font-size:10px;color:var(--mu);font-weight:700;margin-bottom:5px"><span>DATE</span><span>BARAF</span><span>BILL</span><span>PAID</span></div>${rows}<div style="display:flex;justify-content:space-between;padding:10px 12px;background:rgba(59,130,246,.1);border-radius:9px;margin-top:8px;font-weight:800;font-size:13px"><span style="color:var(--p2)">Total (${dates.length} din)</span><span style="color:var(--p2)">${qStr(tPati)}</span><span style="color:var(--w)">Rs.${Math.round(tBill)}</span><span style="color:var(--g)">Rs.${Math.round(tPaid)}</span></div>`;
   document.getElementById('hPayDiv').style.display='block';document.getElementById('hSaveBtn').style.display='block';
   document.getElementById('hPaid').value=baki>0?baki:'';document.getElementById('hLiveBaki').textContent='Rs. '+baki;document.getElementById('hResult').style.display='block';
 }
 function updateHBaki(){const paid=parseFloat(document.getElementById('hPaid').value)||0;document.getElementById('hLiveBaki').textContent='Rs. '+Math.max(0,Math.round(_hTotalBill-_hPrevPaid-paid));}
-function saveHisaab(){
-  const paid=parseFloat(document.getElementById('hPaid').value)||0;
-  const name=document.getElementById('hCust').value,from=document.getElementById('hFrom').value,to=document.getElementById('hTo').value;
-  const baki=Math.round(_hTotalBill-_hPrevPaid-paid);
-  const rec={id:'h_'+Date.now(),cust:name,fromDate:from,toDate:to,totalBill:Math.round(_hTotalBill),prevPaid:Math.round(_hPrevPaid),paid,baki,savedAt:new Date().toLocaleString('en-PK')};
-  hisaabs.unshift(rec);lSave();DB.ref('hisaabs/'+rec.id).set(rec);
-  toast('✅ Hisaab save ho gaya!');resetHisaab();renderHHistory();renderKhata();
-}
-function shareHisaabWA(){
-  const type=document.getElementById('hType').value;
-  const name=type==='fac'?document.getElementById('hFac').value:document.getElementById('hCust').value;
-  const from=document.getElementById('hFrom').value,to=document.getElementById('hTo').value;
-  const paid=parseFloat(document.getElementById('hPaid').value)||0;
-  const baki=Math.max(0,Math.round(_hTotalBill-_hPrevPaid-paid));
-  let msg='❄️ *Ice Flow — Hisaab*\n👤 *'+name+'*\n📅 '+from+' se '+to+' tak\n─────────────\n';
-  if(_hTotalBill>0)msg+='💰 *Total Bill:* Rs.'+Math.round(_hTotalBill)+'\n✅ *Paid:* Rs.'+paid+'\n⏳ *Baki:* Rs.'+baki;
-  else msg+=document.getElementById('hDetail').innerText.trim().slice(0,300);
-  window.open('https://wa.me/?text='+encodeURIComponent(msg),'_blank');
-}
+function saveHisaab(){const paid=parseFloat(document.getElementById('hPaid').value)||0,name=document.getElementById('hCust').value,from=document.getElementById('hFrom').value,to=document.getElementById('hTo').value,baki=Math.round(_hTotalBill-_hPrevPaid-paid);const rec={id:'h_'+Date.now(),cust:name,fromDate:from,toDate:to,totalBill:Math.round(_hTotalBill),prevPaid:Math.round(_hPrevPaid),paid,baki,savedAt:new Date().toLocaleString('en-PK')};hisaabs.unshift(rec);lSave();DB.ref('hisaabs/'+rec.id).set(rec);toast('✅ Hisaab save ho gaya!');resetHisaab();renderHHistory();renderKhata();}
+function shareHisaabWA(){const type=document.getElementById('hType').value,name=type==='fac'?document.getElementById('hFac').value:document.getElementById('hCust').value,from=document.getElementById('hFrom').value,to=document.getElementById('hTo').value,paid=parseFloat(document.getElementById('hPaid').value)||0,baki=Math.max(0,Math.round(_hTotalBill-_hPrevPaid-paid));let msg='❄️ *Ice Flow — Hisaab*\n👤 *'+name+'*\n📅 '+from+' se '+to+' tak\n─────────────\n';if(_hTotalBill>0)msg+='💰 *Total Bill:* Rs.'+Math.round(_hTotalBill)+'\n✅ *Paid:* Rs.'+paid+'\n⏳ *Baki:* Rs.'+baki;else msg+=document.getElementById('hDetail').innerText.trim().slice(0,300);window.open('https://wa.me/?text='+encodeURIComponent(msg),'_blank');}
 function resetHisaab(){document.getElementById('hResult').style.display='none';document.getElementById('hCust').value='';document.getElementById('hFac').value='';document.getElementById('hFrom').value='';document.getElementById('hTo').value=new Date().toISOString().split('T')[0];document.getElementById('hRate').value='';document.getElementById('hPaid').value='';document.getElementById('hPayDiv').style.display='block';document.getElementById('hSaveBtn').style.display='block';}
-function renderHHistory(){
-  const q=(document.getElementById('hSearch')?.value||'').toLowerCase();
-  const list=q?hisaabs.filter(h=>h.cust.toLowerCase().includes(q)):hisaabs;
-  if(!list.length){document.getElementById('hHistoryList').innerHTML='<p style="color:var(--mu);text-align:center;padding:20px;font-size:13px">Abhi koi hisaab nahi</p>';return;}
-  document.getElementById('hHistoryList').innerHTML=list.map(h=>`<div class="hcard"><div style="display:flex;justify-content:space-between;align-items:flex-start"><div><div style="font-weight:800;font-size:14px">👤 ${h.cust}</div><div style="font-size:10px;color:var(--mu);margin-top:3px">📅 ${h.fromDate} → ${h.toDate}</div><div style="font-size:10px;color:var(--mu)">🕐 ${h.savedAt}</div></div><div style="display:flex;gap:5px"><button class="bsm bsb" onclick="openEditHisaab('${h.id}')">✏️</button><button class="bsm bsr" onclick="delHisaab('${h.id}')">🗑️</button></div></div><div class="hgrid"><div class="hcell" style="background:rgba(245,158,11,.08)"><small>Total Bill</small><b style="color:var(--w)">Rs.${h.totalBill}</b></div><div class="hcell" style="background:rgba(16,185,129,.08)"><small>Paid</small><b style="color:var(--g)">Rs.${h.paid}</b></div><div class="hcell" style="background:rgba(${h.baki>0?'239,68,68':'16,185,129'},.08)"><small>Baki</small><b style="color:${h.baki>0?'var(--r)':'var(--g)'}">Rs.${h.baki}</b></div></div></div>`).join('');
-}
+function renderHHistory(){const q=(document.getElementById('hSearch')?.value||'').toLowerCase();const list=q?hisaabs.filter(h=>h.cust.toLowerCase().includes(q)):hisaabs;if(!list.length){document.getElementById('hHistoryList').innerHTML='<p style="color:var(--mu);text-align:center;padding:20px;font-size:13px">Abhi koi hisaab nahi</p>';return;}document.getElementById('hHistoryList').innerHTML=list.map(h=>`<div class="hcard"><div style="display:flex;justify-content:space-between;align-items:flex-start"><div><div style="font-weight:800;font-size:14px">👤 ${h.cust}</div><div style="font-size:10px;color:var(--mu);margin-top:3px">📅 ${h.fromDate} → ${h.toDate}</div><div style="font-size:10px;color:var(--mu)">🕐 ${h.savedAt}</div></div><div style="display:flex;gap:5px"><button class="bsm bsb" onclick="openEditHisaab('${h.id}')">✏️</button><button class="bsm bsr" onclick="delHisaab('${h.id}')">🗑️</button></div></div><div class="hgrid"><div class="hcell" style="background:rgba(245,158,11,.08)"><small>Total Bill</small><b style="color:var(--w)">Rs.${h.totalBill}</b></div><div class="hcell" style="background:rgba(16,185,129,.08)"><small>Paid</small><b style="color:var(--g)">Rs.${h.paid}</b></div><div class="hcell" style="background:rgba(${h.baki>0?'239,68,68':'16,185,129'},.08)"><small>Baki</small><b style="color:${h.baki>0?'var(--r)':'var(--g)'}">Rs.${h.baki}</b></div></div></div>`).join('');}
 function openEditHisaab(id){const h=hisaabs.find(x=>x.id===id);if(!h)return;document.getElementById('ehId').value=id;document.getElementById('ehCust').value=h.cust;document.getElementById('ehFrom').value=h.fromDate;document.getElementById('ehTo').value=h.toDate;document.getElementById('ehBill').value=h.totalBill;document.getElementById('ehPaid').value=h.paid;updateEHBaki();openModal('editHModal');}
 function updateEHBaki(){const bill=parseFloat(document.getElementById('ehBill').value)||0,paid=parseFloat(document.getElementById('ehPaid').value)||0;document.getElementById('ehBaki').textContent='Rs. '+Math.round(bill-paid);}
 function saveEditHisaab(){const id=document.getElementById('ehId').value,idx=hisaabs.findIndex(h=>h.id===id);if(idx===-1)return;const bill=parseFloat(document.getElementById('ehBill').value)||0,paid=parseFloat(document.getElementById('ehPaid').value)||0,from=document.getElementById('ehFrom').value,to=document.getElementById('ehTo').value;hisaabs[idx]={...hisaabs[idx],fromDate:from,toDate:to,totalBill:bill,paid,baki:Math.round(bill-paid)};lSave();DB.ref('hisaabs/'+id).update({fromDate:from,toDate:to,totalBill:bill,paid,baki:Math.round(bill-paid)});toast('Update ✅');closeModal('editHModal');renderHHistory();renderKhata();}
 function delHisaab(id){if(!confirm('Delete?'))return;hisaabs=hisaabs.filter(h=>h.id!==id);lSave();DB.ref('hisaabs/'+id).remove();toast('Deleted','er');renderHHistory();renderKhata();}
 
-// ═══════════ ORDERS — BOSS ═══════════
-function renderBossOrders(){
-  const today=new Date().toISOString().split('T')[0];
-  if(!document.getElementById('orderDate').value) document.getElementById('orderDate').value=today;
-  renderOrderInputs();renderConfirmedOrders();
-}
-function renderOrderInputs(){
-  const date=document.getElementById('orderDate').value;if(!date)return;
-  const tomorrow=new Date(date+'T00:00:00');tomorrow.setDate(tomorrow.getDate()+1);
-  const tDate=tomorrow.toISOString().split('T')[0];
-  const existing=(hist[tDate]&&hist[tDate].orders)||{};
-  document.getElementById('orderInputs').innerHTML=
-    `<p style="font-size:11px;color:var(--mu);margin-bottom:10px">📅 ${tDate} ke liye order:</p>`+
-    custs.map(c=>`<div style="display:flex;align-items:center;gap:9px;margin-bottom:7px;background:var(--card2);border-radius:10px;padding:8px 11px"><span onclick="speak('${c.name}')" style="flex:1;font-size:13px;font-weight:600;cursor:pointer">👤 ${c.name} <span style="font-size:11px;opacity:.6">🔊</span></span><input class="ei" type="text" id="ord_${sId(c.name)}" value="${existing[c.name]||''}" placeholder="2B/4P" style="width:90px"></div>`).join('');
-}
-function saveOrders(){
-  const date=document.getElementById('orderDate').value;if(!date){toast('Date select karo','er');return;}
-  const tomorrow=new Date(date+'T00:00:00');tomorrow.setDate(tomorrow.getDate()+1);
-  const tDate=tomorrow.toISOString().split('T')[0];
-  const orders={};custs.forEach(c=>{const v=document.getElementById('ord_'+sId(c.name))?.value.trim();if(v)orders[c.name]=v;});
-  if(!Object.keys(orders).length){toast('Koi order nahi dala','er');return;}
-  if(!hist[tDate])hist[tDate]={factories:{},sales:{}};hist[tDate].orders=orders;lSave();
-  DB.ref('history/'+tDate+'/orders').set(orders).then(()=>toast('✅ Order save — '+tDate)).catch(()=>toast('Error!','er'));
-}
-function renderConfirmedOrders(){
-  const today=new Date();const confirmed=[];
-  for(let i=0;i<3;i++){const d=new Date(today);d.setDate(d.getDate()-i);const date=d.toISOString().split('T')[0];if(hist[date]?.confirmed){Object.entries(hist[date].confirmed).forEach(([cust,data])=>confirmed.push({date,cust,...data}));}}
-  const card=document.getElementById('confirmedCard');
-  if(!confirmed.length){card.style.display='none';return;}
-  card.style.display='block';
-  document.getElementById('confirmedList').innerHTML=confirmed.map(c=>`<div style="display:flex;justify-content:space-between;padding:10px 12px;background:var(--card2);border-radius:10px;margin-bottom:7px"><div><div style="font-weight:700;font-size:13px">👤 ${c.cust}</div><div style="font-size:10px;color:var(--mu)">📅 ${c.date} — ✅ ${c.confirmedAt||''}</div></div><div style="font-weight:800;color:var(--g);font-family:'JetBrains Mono',monospace">${c.qty}</div></div>`).join('');
-}
+// ═══ ORDERS ═══
+function renderBossOrders(){const today=new Date().toISOString().split('T')[0];if(!document.getElementById('orderDate').value)document.getElementById('orderDate').value=today;renderOrderInputs();renderConfirmedOrders();}
+function renderOrderInputs(){const date=document.getElementById('orderDate').value;if(!date)return;const tomorrow=new Date(date+'T00:00:00');tomorrow.setDate(tomorrow.getDate()+1);const tDate=tomorrow.toISOString().split('T')[0];const existing=(hist[tDate]&&hist[tDate].orders)||{};document.getElementById('orderInputs').innerHTML=`<p style="font-size:11px;color:var(--mu);margin-bottom:10px">📅 ${tDate} ke liye:</p>`+custs.map(c=>`<div style="display:flex;align-items:center;gap:9px;margin-bottom:7px;background:var(--card2);border-radius:10px;padding:8px 11px"><span onclick="speak('${c.name}')" style="flex:1;font-size:13px;font-weight:600;cursor:pointer">👤 ${c.name} 🔊</span><input class="ei" type="text" id="ord_${sId(c.name)}" value="${existing[c.name]||''}" placeholder="2B/4P" style="width:90px"></div>`).join('');}
+function saveOrders(){const date=document.getElementById('orderDate').value;if(!date){toast('Date select karo','er');return;}const tomorrow=new Date(date+'T00:00:00');tomorrow.setDate(tomorrow.getDate()+1);const tDate=tomorrow.toISOString().split('T')[0];const orders={};custs.forEach(c=>{const v=document.getElementById('ord_'+sId(c.name))?.value.trim();if(v)orders[c.name]=v;});if(!Object.keys(orders).length){toast('Koi order nahi','er');return;}if(!hist[tDate])hist[tDate]={factories:{},sales:{},deliveries:[]};hist[tDate].orders=orders;lSave();DB.ref('history/'+tDate+'/orders').set(orders).then(()=>toast('✅ Order save — '+tDate)).catch(()=>toast('Error!','er'));}
+function renderConfirmedOrders(){const today=new Date();const confirmed=[];for(let i=0;i<3;i++){const d=new Date(today);d.setDate(d.getDate()-i);const date=d.toISOString().split('T')[0];if(hist[date]?.confirmed)Object.entries(hist[date].confirmed).forEach(([cust,data])=>confirmed.push({date,cust,...data}));}const card=document.getElementById('confirmedCard');if(!confirmed.length){card.style.display='none';return;}card.style.display='block';document.getElementById('confirmedList').innerHTML=confirmed.map(c=>`<div style="display:flex;justify-content:space-between;padding:10px 12px;background:var(--card2);border-radius:10px;margin-bottom:7px"><div><div style="font-weight:700;font-size:13px">👤 ${c.cust}</div><div style="font-size:10px;color:var(--mu)">📅 ${c.date} ✅ ${c.confirmedAt||''}</div></div><div style="font-weight:800;color:var(--g);font-family:'JetBrains Mono',monospace">${c.qty}</div></div>`).join('');}
 
-// ═══════════ ORDERS — STAFF ═══════════
-function renderStaffOrders(){
-  const today=new Date().toISOString().split('T')[0];
-  const orders=(hist[today]&&hist[today].orders)||{};
-  const confirmed=(hist[today]&&hist[today].confirmed)||{};
-  // only show NOT YET confirmed
-  const pending=Object.entries(orders).filter(([name,v])=>v&&!confirmed[name]);
-  const soList=document.getElementById('soList'),soEmpty=document.getElementById('soEmpty');
-  if(!pending.length){soList.innerHTML='';soEmpty.style.display='block';return;}
-  soEmpty.style.display='none';
-  soList.innerHTML=pending.map(([name,qty])=>`
-    <div class="ocard" style="border-left-color:var(--g)">
-      <div onclick="speak('${name}')" style="flex:1;cursor:pointer">
-        <div style="font-weight:800;font-size:16px">👤 ${name} <span style="font-size:13px">🔊</span></div>
-        <div style="font-weight:700;font-size:18px;color:var(--g);margin-top:4px">❄️ ${qty}</div>
-      </div>
-      <button class="btn bgre" style="width:auto;padding:10px 16px;font-size:13px" onclick="confirmOrder('${name}','${qty}')">✅ Confirm</button>
-    </div>`).join('');
-}
-function confirmOrder(name,qty){
-  if(!confirm(name+' ki '+qty+' baraf confirm karein?'))return;
-  const today=new Date().toISOString().split('T')[0];
-  const now=new Date().toLocaleTimeString('en-PK',{hour:'2-digit',minute:'2-digit'});
-  if(!hist[today])hist[today]={factories:{},sales:{}};
-  if(!hist[today].confirmed)hist[today].confirmed={};
-  hist[today].confirmed[name]={qty,confirmedAt:now};
-  lSave();
-  DB.ref('history/'+today+'/confirmed/'+name).set({qty,confirmedAt:now})
-    .then(()=>{
-      toast('✅ '+name+' confirm ho gaya!');
-      DB.ref('notifications').push({cust:name,qty,time:now,date:today,seen:false});
-      renderStaffOrders(); // removes confirmed order from list
-    }).catch(()=>toast('Error!','er'));
-}
+// ═══ STAFF ═══
+function renderStaffKhata(){const tot={},today=new Date();Object.entries(hist).forEach(([,h])=>{Object.entries(h.sales||{}).forEach(([n,s])=>{tot[n]=(tot[n]||0)+parseFloat(s.bill||0)-parseFloat(s.paid||0);});});hisaabs.forEach(h=>{if(tot[h.cust]!==undefined)tot[h.cust]-=h.paid;});const custDays={};Object.entries(hist).forEach(([date,h])=>{const age=Math.max(0,Math.floor((today-new Date(date+'T00:00:00'))/864e5));Object.entries(h.sales||{}).forEach(([n,s])=>{const b=parseFloat(s.bill||0)-parseFloat(s.paid||0);if(b>0.5&&(!custDays[n]||age>custDays[n]))custDays[n]=age;});});const pending=Object.entries(tot).filter(([,v])=>v>0.5).sort((a,b)=>b[1]-a[1]);const grand=pending.reduce((a,[,v])=>a+v,0);document.getElementById('skTot').textContent='Rs. '+Math.round(grand);document.getElementById('skList').innerHTML=pending.map(([n,v])=>{const baki=Math.round(v),days=custDays[n]||0,col=days>30?'var(--r)':days>14?'var(--w)':'var(--p)';return `<div onclick="speak('${n}')" style="display:flex;justify-content:space-between;align-items:center;padding:16px 18px;background:var(--card);border:1px solid var(--bdr);border-left:4px solid ${col};border-radius:14px;margin-bottom:10px;cursor:pointer"><div><div style="font-weight:800;font-size:16px">👤 ${n} <span style="font-size:13px">🔊</span></div><div style="font-size:11px;color:${days>14?'var(--r)':'var(--mu)'};margin-top:3px">📅 ${days} din se baki</div></div><div style="text-align:right"><div style="font-weight:800;font-size:18px;color:var(--r);font-family:'JetBrains Mono',monospace">Rs.${baki}</div><div style="font-size:10px;color:var(--mu)">baki hai</div></div></div>`;}).join('')||'<div style="text-align:center;padding:40px;color:var(--g);font-size:14px">✅ Koi udhaar nahi!</div>';}
+function renderStaffOrders(){const today=new Date().toISOString().split('T')[0];const orders=(hist[today]&&hist[today].orders)||{},confirmed=(hist[today]&&hist[today].confirmed)||{};const pending=Object.entries(orders).filter(([name,v])=>v&&!confirmed[name]);const soList=document.getElementById('soList'),soEmpty=document.getElementById('soEmpty');if(!pending.length){soList.innerHTML='';soEmpty.style.display='block';return;}soEmpty.style.display='none';soList.innerHTML=pending.map(([name,qty])=>`<div style="display:flex;justify-content:space-between;align-items:center;padding:14px 15px;background:var(--card);border:1px solid var(--bdr);border-left:4px solid var(--p);border-radius:13px;margin-bottom:10px"><div onclick="speak('${name}')" style="flex:1;cursor:pointer"><div style="font-weight:800;font-size:15px">👤 ${name} 🔊</div><div style="font-weight:700;font-size:17px;color:var(--g);margin-top:4px">❄️ ${qty}</div></div><button class="btn bgre" style="width:auto;padding:10px 16px;font-size:13px" onclick="confirmOrder('${name}','${qty}')">✅ Confirm</button></div>`).join('');}
+function confirmOrder(name,qty){if(!confirm(name+' ki '+qty+' baraf confirm karein?'))return;const today=new Date().toISOString().split('T')[0],now=new Date().toLocaleTimeString('en-PK',{hour:'2-digit',minute:'2-digit'});if(!hist[today])hist[today]={factories:{},sales:{},deliveries:[]};if(!hist[today].confirmed)hist[today].confirmed={};hist[today].confirmed[name]={qty,confirmedAt:now};lSave();DB.ref('history/'+today+'/confirmed/'+name).set({qty,confirmedAt:now}).then(()=>{toast('✅ '+name+' confirm ho gaya!');DB.ref('notifications').push({type:'confirm',cust:name,qty,time:now,date:today,seen:false});renderStaffOrders();}).catch(()=>toast('Error!','er'));}
 
-// ═══════════ STAFF ENTRY ═══════════
-function renderStaffEntry(){
-  const date=document.getElementById('sEDate').value;
-  if(!date)return;
-  const day=hist[date]||{factories:{},sales:{}};
-  // factories
-  document.getElementById('sFacIn').innerHTML=facs.map(f=>{
-    const v=(day.factories&&day.factories[f])||0;
-    return `<div style="display:flex;align-items:center;gap:9px;margin-bottom:7px;background:var(--card2);border-radius:10px;padding:8px 11px"><span style="flex:1;font-size:13px;font-weight:600">🏭 ${f}</span><input class="ei" type="number" id="sf_${sId(f)}" value="${v}" style="width:95px"></div>`;
-  }).join('')||'<p style="color:var(--mu);font-size:12px">Factory nahi hai</p>';
-  // customers
-  let tP=0,tC=0,tB=0;
-  document.getElementById('sEBody').innerHTML=custs.map(cust=>{
-    const n=cust.name,id=sId(n);
-    const s=(day.sales&&day.sales[n])||{qty:0,rate:cust.rate||0,bill:0,paid:0};
-    const pati=parseInt(s.qty||0),rate=parseFloat(s.rate)||cust.rate||0;
-    const bill=parseFloat(s.bill||0),paid=parseFloat(s.paid||0);
-    tP+=pati;tC+=paid;tB+=bill;
-    const qd=pati>0?qStr(pati):'';
-    const rc=cust.rate>0?'style="color:var(--g)"':'';
-    return `<tr>
-      <td style="font-weight:700;text-align:left;padding-left:9px">${n}</td>
-      <td><input class="ei" type="text" id="sq_${id}" value="${qd}" placeholder="2B/4P"></td>
-      <td><input class="ei" type="number" id="sr_${id}" value="${rate||''}" placeholder="Rate" ${rc}></td>
-      <td id="sb_${id}" style="font-weight:700;color:var(--w)">${bill||0}</td>
-      <td><input class="ei" type="number" id="sp_${id}" value="${paid||''}" placeholder="0"></td>
-      <td id="sk_${id}" style="font-weight:700;color:var(--r)">${Math.round(bill-paid)}</td>
-      <td><button onclick="speak('${n}')" style="background:none;border:none;font-size:16px;cursor:pointer">🔊</button></td>
-    </tr>`;
-  }).join('');
-  document.getElementById('ssQ').textContent=qStr(tP);
-  document.getElementById('ssC').textContent=Math.round(tC);
-  document.getElementById('ssB').textContent=Math.round(tB);
-  document.getElementById('ssK').textContent=Math.round(tB-tC);
-  // attach events
-  custs.forEach(cust=>{
-    const id=sId(cust.name);
-    const qEl=document.getElementById('sq_'+id),rEl=document.getElementById('sr_'+id),pEl=document.getElementById('sp_'+id);
-    if(!qEl)return;
-    [qEl,rEl,pEl].forEach((el,i,arr)=>{
-      el.addEventListener('change',()=>recalcStaffRow(cust.name));
-      el.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();arr[i+1]?arr[i+1].focus():el.blur();}});
-    });
-  });
-}
-function recalcStaffRow(name){
-  const id=sId(name);
-  const pati=parseQ(document.getElementById('sq_'+id)?.value);
-  const rate=parseFloat(document.getElementById('sr_'+id)?.value)||0;
-  const paid=parseFloat(document.getElementById('sp_'+id)?.value)||0;
-  const bill=calcBill(pati,rate);
-  const bEl=document.getElementById('sb_'+id),kEl=document.getElementById('sk_'+id);
-  if(bEl)bEl.textContent=bill;if(kEl)kEl.textContent=Math.round(bill-paid);
-  let tP=0,tC=0,tB=0;
-  custs.forEach(c=>{
-    const ci=sId(c.name);
-    const cp=parseQ(document.getElementById('sq_'+ci)?.value);
-    const cr=parseFloat(document.getElementById('sr_'+ci)?.value)||0;
-    const cc=parseFloat(document.getElementById('sp_'+ci)?.value)||0;
-    tP+=cp;tC+=cc;tB+=calcBill(cp,cr);
-  });
-  document.getElementById('ssQ').textContent=qStr(tP);
-  document.getElementById('ssC').textContent=Math.round(tC);
-  document.getElementById('ssB').textContent=Math.round(tB);
-  document.getElementById('ssK').textContent=Math.round(tB-tC);
-}
-function saveStaffEntry(){
-  const date=document.getElementById('sEDate').value;
-  if(!date){toast('Date select karo','er');return;}
-  const f={},s={};
-  facs.forEach(fc=>{f[fc]=document.getElementById('sf_'+sId(fc))?.value||0;});
-  custs.forEach(cust=>{
-    const n=cust.name,id=sId(n);
-    const pati=parseQ(document.getElementById('sq_'+id)?.value);
-    const rate=parseFloat(document.getElementById('sr_'+id)?.value)||0;
-    const paid=parseFloat(document.getElementById('sp_'+id)?.value)||0;
-    s[n]={qty:pati,rate,bill:calcBill(pati,rate),paid};
-  });
-  if(!hist[date])hist[date]={};
-  hist[date].factories=f;hist[date].sales=s;lSave();
-  DB.ref('history/'+date).update({factories:f,sales:s})
-    .then(()=>toast('Saved & Synced ✅'))
-    .catch(()=>toast('Offline — Local save','er'));
-}
-
-// ═══════════ STAFF KHATA ═══════════
-function renderStaffKhata(){
-  const tot={},today=new Date();
-  Object.entries(hist).forEach(([,h])=>{Object.entries(h.sales||{}).forEach(([n,s])=>{tot[n]=(tot[n]||0)+parseFloat(s.bill||0)-parseFloat(s.paid||0);});});
-  hisaabs.forEach(h=>{if(tot[h.cust]!==undefined)tot[h.cust]-=h.paid;});
-  // calc oldest days per customer
-  const custDays={};
-  Object.entries(hist).forEach(([date,h])=>{
-    const age=Math.max(0,Math.floor((today-new Date(date+'T00:00:00'))/864e5));
-    Object.entries(h.sales||{}).forEach(([n,s])=>{const b=parseFloat(s.bill||0)-parseFloat(s.paid||0);if(b>0.5&&(!custDays[n]||age>custDays[n]))custDays[n]=age;});
-  });
-  const pending=Object.entries(tot).filter(([,v])=>v>0.5).sort((a,b)=>b[1]-a[1]);
-  const grand=pending.reduce((a,[,v])=>a+v,0);
-  document.getElementById('skTot').textContent='Rs. '+Math.round(grand);
-  document.getElementById('skList').innerHTML=pending.map(([n,v])=>{
-    const baki=Math.round(v),days=custDays[n]||0;
-    const col=days>30?'var(--r)':days>14?'var(--w)':'var(--p)';
-    return `<div class="ucard" style="border-left:4px solid ${col}" onclick="speak('${n}')">
-      <div>
-        <div style="font-weight:800;font-size:16px">👤 ${n} <span style="font-size:13px">🔊</span></div>
-        <div style="font-size:11px;color:${days>14?'var(--r)':'var(--mu)'};margin-top:3px">📅 ${days} din se baki</div>
-      </div>
-      <div style="text-align:right">
-        <div style="font-weight:800;font-size:18px;color:var(--r);font-family:'JetBrains Mono',monospace">Rs.${baki}</div>
-        <div style="font-size:10px;color:var(--mu)">baki hai</div>
-      </div>
-    </div>`;
-  }).join('')||'<div style="text-align:center;padding:40px;color:var(--g);font-size:14px">✅ Koi udhaar nahi!</div>';
-}
-
-// ═══════════ BOSS NOTIFICATIONS ═══════════
-function checkBossNotifs(){
-  DB.ref('notifications').orderByChild('seen').equalTo(false).once('value').then(snap=>{
-    const all=snap.val();if(!all)return;
-    Object.entries(all).forEach(([key,n])=>{
-      setTimeout(()=>toast('❄️ '+n.cust+' ki '+n.qty+' baraf utari — '+n.time,'ok'),200);
-      DB.ref('notifications/'+key+'/seen').set(true);
-    });
-  });
-}
-
-// ═══════════ NOTES ═══════════
+// ═══ NOTES ═══
 function saveNote(){const text=document.getElementById('nTxt').value.trim(),id=document.getElementById('nEId').value;if(!text){toast('Kuch likho','er');return;}if(id){DB.ref('notes/'+id).update({text}).then(()=>{cancelNote();toast('Updated ✅');loadNotes()});}else{DB.ref('notes').push({text,date:new Date().toLocaleString('en-PK')}).then(()=>{document.getElementById('nTxt').value='';toast('Saved ✅');loadNotes();});}}
 function loadNotes(){DB.ref('notes').once('value').then(snap=>{notes=Object.entries(snap.val()||{}).map(([id,v])=>({id,...v})).reverse();lSave();renderNotes();});}
-function renderNotes(){document.getElementById('nList').innerHTML=notes.map(n=>`<div class="nc"><div style="font-size:10px;color:var(--mu)">${n.date||''}</div><p>${n.text}</p><div style="display:flex;gap:7px"><button class="bsm bsb" onclick="editNote('${n.id}','${encodeURIComponent(n.text)}')">✏️ Edit</button><button class="bsm bsr" onclick="delNote('${n.id}')">🗑️</button></div></div>`).join('')||'<p style="color:var(--mu);text-align:center;padding:20px;font-size:13px">Koi note nahi</p>';}
+function renderNotes(){document.getElementById('nList').innerHTML=notes.map(n=>`<div class="nc"><div style="font-size:10px;color:var(--mu)">${n.date||''}</div><p>${n.text}</p><div style="display:flex;gap:7px"><button class="bsm bsb" onclick="editNote('${n.id}','${encodeURIComponent(n.text)}')">✏️</button><button class="bsm bsr" onclick="delNote('${n.id}')">🗑️</button></div></div>`).join('')||'<p style="color:var(--mu);text-align:center;padding:20px;font-size:13px">Koi note nahi</p>';}
 function editNote(id,enc){document.getElementById('nTxt').value=decodeURIComponent(enc);document.getElementById('nEId').value=id;document.getElementById('nSBtn').textContent='Update';document.getElementById('nCBtn').style.display='block';window.scrollTo(0,0);}
 function cancelNote(){document.getElementById('nTxt').value='';document.getElementById('nEId').value='';document.getElementById('nSBtn').textContent='Save';document.getElementById('nCBtn').style.display='none';}
 function delNote(id){if(!confirm('Delete?'))return;DB.ref('notes/'+id).remove().then(()=>{toast('Deleted','er');loadNotes();});}
 
-// ═══════════ REPORTS ═══════════
+// ═══ REPORTS ═══
 function showRpt(html){document.getElementById('rCon').innerHTML=html;document.getElementById('rOut').style.display='block';}
-function dailyRpt(){const d=document.getElementById('rD').value,day=hist[d];if(!day){toast('Is date ka data nahi','er');return;}let h=`<h3 style="margin-bottom:9px">📅 ${d}</h3>`;if(day.factories)Object.entries(day.factories).forEach(([f,v])=>h+=`<div style="font-size:12px;color:var(--mu);margin-bottom:3px">🏭 ${f}: <b>${v}</b></div>`);let tB=0,tP=0;h+=`<div class="tw" style="margin-top:9px"><table><thead><tr><th>Customer</th><th>Baraf</th><th>Bill</th><th>Paid</th><th>Baki</th></tr></thead><tbody>`;Object.entries(day.sales||{}).forEach(([n,s])=>{tB+=parseFloat(s.bill||0);tP+=parseFloat(s.paid||0);h+=`<tr><td>${n}</td><td>${qStr(parseInt(s.qty||0))}</td><td>Rs.${s.bill}</td><td style="color:var(--g)">Rs.${s.paid}</td><td style="color:var(--r)">Rs.${Math.round(s.bill-s.paid)}</td></tr>`;});h+=`</tbody></table></div><div style="margin-top:9px;font-size:13px;display:flex;flex-direction:column;gap:5px"><b>Bill: Rs.${Math.round(tB)}</b><b style="color:var(--g)">Paid: Rs.${Math.round(tP)}</b><b style="color:var(--r)">Baki: Rs.${Math.round(tB-tP)}</b></div>`;showRpt(h);}
-function monthlyRpt(){const mon=document.getElementById('rM').value;if(!mon){toast('Month select karo','er');return;}const dates=Object.keys(hist).filter(d=>d.startsWith(mon)).sort();if(!dates.length){toast('Is month ka data nahi','er');return;}let rows='',tQ=0,tB=0,tP=0;dates.forEach(date=>{const day=hist[date];rows+=`<tr style="background:rgba(59,130,246,.07)"><td colspan="5" style="text-align:left;font-weight:700;padding:7px">📅 ${date}</td></tr>`;if(day.factories)Object.entries(day.factories).forEach(([f,v])=>rows+=`<tr><td style="color:var(--mu)">🏭 ${f}</td><td colspan="4">${v}</td></tr>`);Object.entries(day.sales||{}).forEach(([n,s])=>{tQ+=parseInt(s.qty||0);tB+=parseFloat(s.bill||0);tP+=parseFloat(s.paid||0);rows+=`<tr><td>${n}</td><td>${qStr(parseInt(s.qty||0))}</td><td>Rs.${s.bill}</td><td style="color:var(--g)">Rs.${s.paid}</td><td style="color:var(--r)">Rs.${Math.round(s.bill-s.paid)}</td></tr>`;});});showRpt(`<h3 style="text-align:center;margin-bottom:9px">📅 ${mon}</h3><div class="tw"><table style="font-size:11px"><thead><tr><th>Name</th><th>Baraf</th><th>Bill</th><th>Paid</th><th>Baki</th></tr></thead><tbody>${rows}</tbody></table></div><div style="margin-top:11px;font-size:13px;display:flex;flex-direction:column;gap:6px"><b>Baraf: ${qStr(tQ)}</b><b>Revenue: Rs.${Math.round(tB)}</b><b style="color:var(--g)">Received: Rs.${Math.round(tP)}</b><b style="color:var(--r)">Pending: Rs.${Math.round(tB-tP)}</b></div>`);}
-function rangeRpt(){const target=document.getElementById('rT').value,from=document.getElementById('rF').value,to=document.getElementById('rTo').value;if(!from||!to){toast('Dates select karo','er');return;}const isFac=facs.includes(target);const dates=Object.keys(hist).filter(d=>d>=from&&d<=to).sort();if(!dates.length){toast('Data nahi','er');return;}let rows='',tQ=0,tB=0,tP=0;dates.forEach(date=>{const day=hist[date];let qty=0,bill=0,paid=0;if(isFac){qty=(day.factories&&day.factories[target])||0;}else{const s=day.sales?.[target];if(s){qty=s.qty||0;bill=parseFloat(s.bill||0);paid=parseFloat(s.paid||0);tB+=bill;tP+=paid;}}tQ+=parseFloat(qty||0);if(qty||bill||paid)rows+=`<tr><td>${date}</td><td>${isFac?qty:qStr(parseInt(qty||0))}</td><td style="color:var(--w)">${bill?'Rs.'+bill:'—'}</td><td style="color:var(--g)">${paid?'Rs.'+paid:'—'}</td></tr>`;});if(!isFac)hisaabs.filter(h=>h.cust===target&&h.toDate>=from&&h.toDate<=to).sort((a,b)=>a.toDate>b.toDate?1:-1).forEach(h=>{tP+=h.paid;rows+=`<tr style="background:rgba(16,185,129,.06)"><td>${h.toDate} <span style="font-size:9px;color:var(--g)">🧾</span></td><td>—</td><td>—</td><td style="color:var(--g);font-weight:700">✅ Rs.${h.paid}</td></tr>`;});showRpt(`<h3 style="margin-bottom:9px">${isFac?'🏭':'👤'} ${target}</h3><div class="tw"><table><thead><tr><th>Date</th><th>Qty</th><th>Bill</th><th>Paid</th></tr></thead><tbody>${rows}</tbody></table></div><div style="margin-top:9px;font-size:13px;display:flex;flex-direction:column;gap:5px"><b>Total: ${isFac?tQ:qStr(Math.round(tQ))}</b>${tB?`<b>Bill: Rs.${Math.round(tB)}</b>`:''}${tP?`<b style="color:var(--g)">Paid: Rs.${Math.round(tP)}</b>`:''}${tB?`<b style="color:var(--r)">Baki: Rs.${Math.round(tB-tP)}</b>`:''}</div>`);}
+function dailyRpt(){const d=document.getElementById('rD').value,day=hist[d];if(!day){toast('Data nahi','er');return;}let h=`<h3 style="margin-bottom:9px">📅 ${d}</h3>`;if(day.factories)Object.entries(day.factories).forEach(([f,v])=>h+=`<div style="font-size:12px;color:var(--mu);margin-bottom:3px">🏭 ${f}: <b>${v}</b></div>`);let tB=0,tP=0;h+=`<div class="tw" style="margin-top:9px"><table><thead><tr><th>Customer</th><th>Baraf</th><th>Bill</th><th>Paid</th><th>Baki</th></tr></thead><tbody>`;Object.entries(day.sales||{}).forEach(([n,s])=>{tB+=parseFloat(s.bill||0);tP+=parseFloat(s.paid||0);h+=`<tr><td>${n}</td><td>${qStr(parseInt(s.qty||0))}</td><td>Rs.${s.bill}</td><td style="color:var(--g)">Rs.${s.paid}</td><td style="color:var(--r)">Rs.${Math.round(s.bill-s.paid)}</td></tr>`;});h+=`</tbody></table></div><div style="margin-top:9px;font-size:13px;display:flex;flex-direction:column;gap:5px"><b>Bill: Rs.${Math.round(tB)}</b><b style="color:var(--g)">Paid: Rs.${Math.round(tP)}</b><b style="color:var(--r)">Baki: Rs.${Math.round(tB-tP)}</b></div>`;showRpt(h);}
+function monthlyRpt(){const mon=document.getElementById('rM').value;if(!mon){toast('Month select karo','er');return;}const dates=Object.keys(hist).filter(d=>d.startsWith(mon)).sort();if(!dates.length){toast('Data nahi','er');return;}let rows='',tQ=0,tB=0,tP=0;dates.forEach(date=>{const day=hist[date];rows+=`<tr style="background:rgba(59,130,246,.07)"><td colspan="5" style="text-align:left;font-weight:700;padding:7px">📅 ${date}</td></tr>`;if(day.factories)Object.entries(day.factories).forEach(([f,v])=>rows+=`<tr><td style="color:var(--mu)">🏭 ${f}</td><td colspan="4">${v}</td></tr>`);Object.entries(day.sales||{}).forEach(([n,s])=>{tQ+=parseInt(s.qty||0);tB+=parseFloat(s.bill||0);tP+=parseFloat(s.paid||0);rows+=`<tr><td>${n}</td><td>${qStr(parseInt(s.qty||0))}</td><td>Rs.${s.bill}</td><td style="color:var(--g)">Rs.${s.paid}</td><td style="color:var(--r)">Rs.${Math.round(s.bill-s.paid)}</td></tr>`;});});showRpt(`<h3 style="text-align:center;margin-bottom:9px">📅 ${mon}</h3><div class="tw"><table style="font-size:11px"><thead><tr><th>Name</th><th>Baraf</th><th>Bill</th><th>Paid</th><th>Baki</th></tr></thead><tbody>${rows}</tbody></table></div><div style="margin-top:11px;font-size:13px;display:flex;flex-direction:column;gap:6px"><b>Baraf: ${qStr(tQ)}</b><b>Revenue: Rs.${Math.round(tB)}</b><b style="color:var(--g)">Received: Rs.${Math.round(tP)}</b><b style="color:var(--r)">Pending: Rs.${Math.round(tB-tP)}</b></div>`);}
+function rangeRpt(){const target=document.getElementById('rT').value,from=document.getElementById('rF').value,to=document.getElementById('rTo').value;if(!from||!to){toast('Dates select karo','er');return;}const isFac=facs.includes(target);const dates=Object.keys(hist).filter(d=>d>=from&&d<=to).sort();if(!dates.length){toast('Data nahi','er');return;}let rows='',tQ=0,tB=0,tP=0;dates.forEach(date=>{const day=hist[date];let qty=0,bill=0,paid=0;if(isFac){qty=(day.factories&&day.factories[target])||0;}else{const s=day.sales?.[target];if(s){qty=s.qty||0;bill=parseFloat(s.bill||0);paid=parseFloat(s.paid||0);tB+=bill;tP+=paid;}}tQ+=parseFloat(qty||0);if(qty||bill||paid)rows+=`<tr><td>${date}</td><td>${isFac?qty:qStr(parseInt(qty||0))}</td><td style="color:var(--w)">${bill?'Rs.'+bill:'—'}</td><td style="color:var(--g)">${paid?'Rs.'+paid:'—'}</td></tr>`;});if(!isFac)hisaabs.filter(h=>h.cust===target&&h.toDate>=from&&h.toDate<=to).sort((a,b)=>a.toDate>b.toDate?1:-1).forEach(h=>{tP+=h.paid;rows+=`<tr style="background:rgba(16,185,129,.06)"><td>${h.toDate} 🧾</td><td>—</td><td>—</td><td style="color:var(--g);font-weight:700">✅ Rs.${h.paid}</td></tr>`;});showRpt(`<h3 style="margin-bottom:9px">${isFac?'🏭':'👤'} ${target}</h3><div class="tw"><table><thead><tr><th>Date</th><th>Qty</th><th>Bill</th><th>Paid</th></tr></thead><tbody>${rows}</tbody></table></div><div style="margin-top:9px;font-size:13px;display:flex;flex-direction:column;gap:5px"><b>Total: ${isFac?tQ:qStr(Math.round(tQ))}</b>${tB?`<b>Bill: Rs.${Math.round(tB)}</b>`:''}${tP?`<b style="color:var(--g)">Paid: Rs.${Math.round(tP)}</b>`:''}${tB?`<b style="color:var(--r)">Baki: Rs.${Math.round(tB-tP)}</b>`:''}</div>`);}
 function doPrint(){const c=document.getElementById('rCon').innerHTML;const w=window.open('','_blank');w.document.write(`<html><head><title>Ice Flow</title><style>body{font-family:sans-serif;padding:20px}table{width:100%;border-collapse:collapse}th,td{border:1px solid #000;padding:7px;text-align:center}tr:nth-child(even){background:#f9f9f9}</style></head><body>${c}</body></html>`);w.document.close();w.print();}
 function rptWA(){const el=document.getElementById('rCon');let msg='❄️ *Ice Flow Report*\n\n';el.querySelectorAll('h3').forEach(h=>msg+='*'+h.innerText+'*\n');el.querySelectorAll('tr').forEach(tr=>{const cells=[...tr.querySelectorAll('th,td')].map(c=>c.innerText.trim());if(cells.some(c=>c))msg+=cells.join(' | ')+'\n';});el.querySelectorAll('div>b').forEach(b=>msg+=b.parentElement.innerText.trim()+'\n');window.open('https://wa.me/?text='+encodeURIComponent(msg.slice(0,1000)),'_blank');}
 
-// ═══════════ SETTINGS ═══════════
-function addStaff(){const u=document.getElementById('nSU').value.trim(),p=document.getElementById('nSP').value.trim();if(!u||!p){toast('Dono bharo','er');return;}if(staffAccounts.find(s=>s.u===u)){toast('Already exist','er');return;}staffAccounts.push({u,p});DB.ref('staffAccounts').set(staffAccounts);lSave();document.getElementById('nSU').value='';document.getElementById('nSP').value='';toast('Staff account ban gaya ✅');renderSettings();}
-function delStaff(u){
-  if(!confirm(u+' ka account delete karein? Woh login nahi kar payega.'))return;
-  staffAccounts=staffAccounts.filter(s=>s.u!==u);
-  DB.ref('staffAccounts').set(staffAccounts);
-  lSave();toast(u+' delete ho gaya','er');renderSettings();
-}
-function editStaffPass(u){
-  const newP=prompt(u+' ka naya password daalo:');
-  if(!newP||!newP.trim()){return;}
-  const idx=staffAccounts.findIndex(s=>s.u===u);
-  if(idx===-1)return;
-  staffAccounts[idx].p=newP.trim();
-  DB.ref('staffAccounts').set(staffAccounts);
-  lSave();toast(u+' ka password update ✅');
-}
+// ═══ SETTINGS ═══
+function addStaff(){const u=document.getElementById('nSU').value.trim(),p=document.getElementById('nSP').value.trim(),role=document.getElementById('nSRole').value;if(!u||!p){toast('Dono bharo','er');return;}if(staffAccounts.find(s=>s.u===u)){toast('Already exist','er');return;}staffAccounts.push({u,p,role});DB.ref('staffAccounts').set(staffAccounts);lSave();document.getElementById('nSU').value='';document.getElementById('nSP').value='';toast(u+' ka account ban gaya ✅');renderSettings();}
+function delStaff(u){if(!confirm(u+' delete karein?'))return;staffAccounts=staffAccounts.filter(s=>s.u!==u);DB.ref('staffAccounts').set(staffAccounts);lSave();toast('Deleted','er');renderSettings();}
+function editStaffPass(u){const newP=prompt(u+' ka naya password:');if(!newP||!newP.trim())return;const idx=staffAccounts.findIndex(s=>s.u===u);if(idx===-1)return;staffAccounts[idx].p=newP.trim();DB.ref('staffAccounts').set(staffAccounts);lSave();toast(u+' ka password update ✅');}
 function addFac(){const v=document.getElementById('nF').value.trim();if(!v){toast('Naam likho','er');return;}if(facs.includes(v)){toast('Already exist','er');return;}facs.push(v);DB.ref('factories').set(facs);lSave();document.getElementById('nF').value='';toast('Factory add ✅');renderSettings();}
 function addCust(){const n=document.getElementById('nCN').value.trim(),r=parseFloat(document.getElementById('nCR').value)||0;if(!n){toast('Naam likho','er');return;}if(custs.find(c=>c.name===n)){toast('Already exist','er');return;}custs.push({name:n,rate:r});DB.ref('customers').set(custs);lSave();document.getElementById('nCN').value='';document.getElementById('nCR').value='';toast('Customer add ✅');renderSettings();}
 function updateCustRate(name){const r=parseFloat(document.getElementById('cr_'+sId(name)).value)||0;const idx=custs.findIndex(c=>c.name===name);if(idx>-1){custs[idx].rate=r;DB.ref('customers').set(custs);lSave();toast('Rate update ✅');}}
@@ -1088,43 +1182,51 @@ function editCustName(oldName){const newName=prompt('Naya naam:',oldName);if(!ne
 function delFac(f){if(!confirm('Delete?'))return;facs=facs.filter(x=>x!==f);DB.ref('factories').set(facs);lSave();toast('Deleted','er');renderSettings();}
 function delCust(name){if(!confirm('Delete?'))return;custs=custs.filter(c=>c.name!==name);DB.ref('customers').set(custs);lSave();toast('Deleted','er');renderSettings();}
 function renderSettings(){
-  document.getElementById('staffList').innerHTML=staffAccounts.map(s=>`
-    <div class="si">
-      <div>
-        <div style="font-size:13px;font-weight:600">👷 ${s.u}</div>
-        <div style="font-size:10px;color:var(--mu)">Password: ${'•'.repeat(Math.min(s.p.length,8))}</div>
-      </div>
-      <div style="display:flex;gap:6px">
-        <button class="bsm bsb" onclick="editStaffPass('${s.u}')">✏️ Pass</button>
-        <button class="bsm bsr" onclick="delStaff('${s.u}')">🗑️ Del</button>
-      </div>
-    </div>`).join('')||'<p style="font-size:12px;color:var(--mu)">Koi staff account nahi</p>';
+  document.getElementById('staffList').innerHTML=staffAccounts.map(s=>{const icon=s.role==='chacho'?'🧔':'👷';const roleLabel=s.role==='chacho'?'Chacho':'Staff';return `<div class="si"><div><div style="font-size:13px;font-weight:600">${icon} ${s.u}</div><div style="font-size:10px;color:var(--mu)">${roleLabel} — ${'•'.repeat(Math.min(s.p.length,8))}</div></div><div style="display:flex;gap:6px"><button class="bsm bsb" onclick="editStaffPass('${s.u}')">✏️</button><button class="bsm bsr" onclick="delStaff('${s.u}')">🗑️</button></div></div>`;}).join('')||'<p style="font-size:12px;color:var(--mu)">Koi account nahi</p>';
   document.getElementById('fList').innerHTML=facs.map(f=>`<div class="si"><span style="font-size:13px;font-weight:600">🏭 ${f}</span><button class="bsm bsr" onclick="delFac('${f}')">Delete</button></div>`).join('');
   const q=(document.getElementById('cSrch')?.value||'').toLowerCase();
   document.getElementById('cList').innerHTML=custs.filter(c=>c.name.toLowerCase().includes(q)).map(c=>`<div class="si"><div style="display:flex;align-items:center;gap:8px"><span style="font-size:13px;font-weight:600">👤 ${c.name}</span><button class="bsm bsb" style="padding:4px 8px;font-size:10px" onclick="editCustName('${c.name}')">✏️</button></div><div style="display:flex;gap:6px;align-items:center"><input type="number" id="cr_${sId(c.name)}" value="${c.rate||''}" placeholder="Rate" style="width:90px;margin:0;padding:7px 9px;font-size:12px" onchange="updateCustRate('${c.name}')"><button class="bsm bsr" onclick="delCust('${c.name}')">Del</button></div></div>`).join('');
   updateMeta();
 }
 
-// ═══════════ UDHAAR ALERT ═══════════
-function checkUdhaarAlert(){
-  const tot={};
-  Object.entries(hist).forEach(([,h])=>{Object.entries(h.sales||{}).forEach(([n,s])=>{tot[n]=(tot[n]||0)+parseFloat(s.bill||0)-parseFloat(s.paid||0);});});
-  hisaabs.forEach(h=>{if(tot[h.cust]!==undefined)tot[h.cust]-=h.paid;});
-  const pending=Object.entries(tot).filter(([,v])=>v>0.5).sort((a,b)=>b[1]-a[1]);
-  if(!pending.length)return;
-  const totalBaki=pending.reduce((a,[,v])=>a+v,0);
-  document.getElementById('aDate').textContent=new Date().toLocaleDateString('en-PK',{weekday:'long',day:'numeric',month:'long'})+' | Kul: Rs.'+Math.round(totalBaki);
-  document.getElementById('aList').innerHTML=pending.slice(0,5).map(([n,v])=>`<div style="display:flex;justify-content:space-between;padding:10px 12px;background:var(--card2);border-radius:11px;margin-bottom:7px;border-left:3px solid var(--r)"><span style="font-weight:600">👤 ${n}</span><span style="font-weight:800;color:var(--r);font-family:'JetBrains Mono',monospace">Rs.${Math.round(v)}</span></div>`).join('')+(pending.length>5?`<div style="text-align:center;font-size:12px;color:var(--mu);margin-top:6px">+${pending.length-5} aur...</div>`:'');
-  openModal('alertModal');
-}
-// Register Service Worker
-if('serviceWorker' in navigator){
-  window.addEventListener('load', ()=>{
-    navigator.serviceWorker.register('sw.js')
-      .then(()=>console.log('SW registered'))
-      .catch(e=>console.log('SW error:',e));
+// ═══ SHIFTS BOSS VIEW ═══
+function renderShifts(){
+  const date=document.getElementById('shiftDate').value||new Date().toISOString().split('T')[0];
+  document.getElementById('shiftDate').value=date;
+  document.getElementById('shiftsList').innerHTML='<p style="color:var(--mu);font-size:12px;text-align:center;padding:10px">Loading...</p>';
+  DB.ref('shifts/'+date).once('value').then(snap=>{
+    const data=snap.val();
+    if(!data){
+      document.getElementById('shiftsList').innerHTML='<div style="text-align:center;padding:30px;color:var(--mu);font-size:13px">📭 Aaj koi shift submit nahi hui</div>';
+      return;
+    }
+    document.getElementById('shiftsList').innerHTML=Object.values(data).map(s=>`
+      <div style="background:var(--card2);border:1px solid var(--bdr);border-left:4px solid var(--w);border-radius:13px;padding:13px;margin-bottom:10px">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+          <div style="font-weight:800;font-size:15px">🧔 ${s.user}</div>
+          <div style="font-size:11px;color:var(--mu)">🕐 ${s.submittedAt}</div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:${s.note?'8px':'0'}">
+          <div style="background:rgba(16,185,129,.08);border-radius:9px;padding:9px;text-align:center">
+            <div style="font-size:9px;color:var(--mu);text-transform:uppercase;margin-bottom:3px">Cash Aaya</div>
+            <div style="font-weight:800;color:var(--g);font-family:'JetBrains Mono',monospace;font-size:15px">Rs.${s.cash}</div>
+          </div>
+          <div style="background:rgba(59,130,246,.08);border-radius:9px;padding:9px;text-align:center">
+            <div style="font-size:9px;color:var(--mu);text-transform:uppercase;margin-bottom:3px">Bachi Baraf</div>
+            <div style="font-weight:800;color:var(--p2);font-family:'JetBrains Mono',monospace;font-size:15px">${s.bachiBaraf}</div>
+          </div>
+        </div>
+        ${s.note?`<div style="font-size:12px;color:var(--mu);background:var(--card);border-radius:8px;padding:8px;margin-top:4px">📝 ${s.note}</div>`:''}
+      </div>`).join('');
   });
 }
+
+// ═══ ALERTS & NOTIFICATIONS ═══
+function checkUdhaarAlert(){const tot={};Object.entries(hist).forEach(([,h])=>{Object.entries(h.sales||{}).forEach(([n,s])=>{tot[n]=(tot[n]||0)+parseFloat(s.bill||0)-parseFloat(s.paid||0);});});hisaabs.forEach(h=>{if(tot[h.cust]!==undefined)tot[h.cust]-=h.paid;});const pending=Object.entries(tot).filter(([,v])=>v>0.5).sort((a,b)=>b[1]-a[1]);if(!pending.length)return;const grand=pending.reduce((a,[,v])=>a+v,0);document.getElementById('aDate').textContent=new Date().toLocaleDateString('en-PK',{weekday:'long',day:'numeric',month:'long'})+' | Kul: Rs.'+Math.round(grand);document.getElementById('aList').innerHTML=pending.slice(0,5).map(([n,v])=>`<div style="display:flex;justify-content:space-between;padding:10px 12px;background:var(--card2);border-radius:11px;margin-bottom:7px;border-left:3px solid var(--r)"><span style="font-weight:600">👤 ${n}</span><span style="font-weight:800;color:var(--r);font-family:'JetBrains Mono',monospace">Rs.${Math.round(v)}</span></div>`).join('')+(pending.length>5?`<div style="text-align:center;font-size:12px;color:var(--mu);margin-top:6px">+${pending.length-5} aur...</div>`:'');openModal('alertModal');}
+function checkBossNotifs(){DB.ref('notifications').orderByChild('seen').equalTo(false).once('value').then(snap=>{const all=snap.val();if(!all)return;Object.entries(all).forEach(([key,n])=>{const msg=n.type==='shift'?'👥 '+n.msg:n.type==='confirm'?'❄️ '+n.cust+' ki '+n.qty+' baraf utari — '+n.time:'📢 '+n.msg;setTimeout(()=>toast(msg,'ok'),300);DB.ref('notifications/'+key+'/seen').set(true);});});}
+
+// ═══ SERVICE WORKER ═══
+if('serviceWorker' in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(e=>{}));
 </script>
 </body>
 </html>
